@@ -8,8 +8,9 @@ This application is to demonstrate how to write an ExtJS application using React
 
 **<h2>Installation</h2>**
 - copy ExtJS framework to webapp/extjs/ext
-- cd webapp/reactjs
-- npm run install
+- run `sencha build development`
+- cd `webapp/reactjs`
+- npm install
 - npm run dev
 - point your browser to http://localhost:3000
 
@@ -25,4 +26,7 @@ On the ReactJS side:
 - All `reactified` ExtJS components are defined in `reactjs/lib/modules.js`. They are all extended from `reactjs/lib/ExtJSComponent.js`. You can add other ExtJS components to be `reactified` in `reactjs/lib/modules.js`.
 
 **<h2>Usage</h2>**
-You can review the provided React fragments to learn about how to write ExtJS code in React/JSX, starting with `reactjs/src/DemoView.js`. I have followed the naming convention on the Sencha ExtReact examples here https://examples.sencha.com/ExtReact/6.6.0/kitchensink/
+You can view the demo page that were built with the code in this repository:
+https://ext-react.github.io/ext-react/demo/index.html
+
+Look at the code in src to learn how to write ExtJS code in React/JSX, starting with `reactjs/src/DemoView.js`.
