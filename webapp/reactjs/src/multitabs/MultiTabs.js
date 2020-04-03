@@ -10,7 +10,7 @@ export class MultiTabs extends React.Component {
     constructor(props) {
         super(props);
 
-        this.tabBarHeight = 44;
+        this.tabBarHeight = 40;
 
         this.state = {
             tabContentHeight: this.props.height - this.tabBarHeight

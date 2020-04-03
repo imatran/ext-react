@@ -41,6 +41,10 @@ export class Personnel extends React.Component {
                         dataIndex={'name'}
                         flex={1}
                         editor={'textfield'}
+                        // listeners={{
+                        //     focusenter: () => { console.log('focusenter'); }
+                        // }}
+                        onFocusEnter={() => { console.log('focusenter'); }}
                     />
 
                     <Column
@@ -59,7 +63,7 @@ export class Personnel extends React.Component {
                     <Column
                         text={'Phone'}
                         dataIndex={'phone'}
-                        flex={1.5}
+                        flex={1.2}
                     />
 
                     <Column

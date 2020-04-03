@@ -40,30 +40,12 @@ export default class ExtComponent extends React.Component {
     }
 
     createExtComponent() {
-        let config = this.getComponentConfig();
-        this.parseComponentListeners(config);
-
         return Ext.create(
             this.getComponentClass(),
-            Ext.apply(config, {
+            Ext.apply(this.getComponentConfig(), {
                 renderTo: this.extComponentRef.current
             })
         );
-    }
-
-    parseComponentListeners(config) {
-        Ext.Object.each(config, (key, value) => {
-            let match = key.match(/^on([A-Z][a-zA-Z]*)$/);
-
-            if(match) {
-                delete config[match.input];
-
-                const listener = match[1].toLowerCase();
-                config.listeners = Ext.Object.merge(config.listeners || {}, {
-                    [listener]: value
-                });
-            }
-        });
     }
 
     updateComponentProps(component, props) {
@@ -115,47 +97,15 @@ export default class ExtComponent extends React.Component {
     getComponentConfig() {
         const config = Ext.Object.merge({}, this.props);
 
+        this.parseComponentListeners(config);
+
         if(!Ext.isEmpty(this.props.children)) {
             const children = React.Children.toArray(this.props.children);
             config.items = this.createComponentItems(children);
-        }
 
-        if(!Ext.isEmpty(config.items)) {
-            const components = config.items;
-
-            // //filter grid columns
-            const columns = Ext.Array.reduce(components, (items, item) => {
-                if(item instanceof Ext.grid.column.Column) {
-                    items.push(item);
-
-                    //create editor of type ExtComponent
-                    const editor = item.editor;
-                    if(editor && editor.type && editor.type.prototype instanceof ExtComponent) {
-                        const me = new editor.type(editor.props);
-                        item.editor = me.createExtComponent();
-                    }
-                }
-                return items;
-            }, []);
-
-            //filter docked items
-            const dockedItems = Ext.Array.reduce(components, (items, item) => {
-                const isColumn = Ext.Array.findBy(columns, column => { return column.id === item.id; }) !== null;
-                !isColumn && item['dock'] && items.push(item);
-                return items;
-            }, []);
-
-            //filter other items
-            const items = Ext.Array.reduce(components, (items, item) => {
-                const isColumn = Ext.Array.findBy(columns, column => { return column.id === item.id; }) !== null;
-                const isDocked = Ext.Array.findBy(dockedItems, i => { return i.id === item.id; }) !== null;
-                !isColumn && !isDocked && items.push(item);
-                return items;
-            }, []);
-
-            config.columns = !Ext.isEmpty(columns) ? columns : null;
-            config.dockedItems = !Ext.isEmpty(dockedItems) ? dockedItems : null;
-            config.items = !Ext.isEmpty(items) ? items : null;
+            if (!Ext.isEmpty(config.items)) {
+                this.parseComponentItems(config);
+            }
         }
 
         return config;
@@ -196,6 +146,59 @@ export default class ExtComponent extends React.Component {
         });
 
         return items;
+    }
+
+    parseComponentItems(config) {
+        const components = config.items;
+
+        // //filter grid columns
+        const columns = Ext.Array.reduce(components, (items, item) => {
+            if(item instanceof Ext.grid.column.Column) {
+                items.push(item);
+
+                //create editor of type ExtComponent
+                const editor = item.editor;
+                if(editor && editor.type && editor.type.prototype instanceof ExtComponent) {
+                    const me = new editor.type(editor.props);
+                    item.editor = me.createExtComponent();
+                }
+            }
+            return items;
+        }, []);
+
+        //filter docked items
+        const dockedItems = Ext.Array.reduce(components, (items, item) => {
+            const isColumn = Ext.Array.findBy(columns, column => { return column.id === item.id; }) !== null;
+            !isColumn && item['dock'] && items.push(item);
+            return items;
+        }, []);
+
+        //filter other items
+        const items = Ext.Array.reduce(components, (items, item) => {
+            const isColumn = Ext.Array.findBy(columns, column => { return column.id === item.id; }) !== null;
+            const isDocked = Ext.Array.findBy(dockedItems, i => { return i.id === item.id; }) !== null;
+            !isColumn && !isDocked && items.push(item);
+            return items;
+        }, []);
+
+        config.columns = !Ext.isEmpty(columns) ? columns : null;
+        config.dockedItems = !Ext.isEmpty(dockedItems) ? dockedItems : null;
+        config.items = !Ext.isEmpty(items) ? items : null;
+    }
+
+    parseComponentListeners(config) {
+        Ext.Object.each(config, (key, value) => {
+            let match = key.match(/^on([A-Z][a-zA-Z]*)$/);
+
+            if(match) {
+                delete config[match.input];
+
+                const listener = match[1].toLowerCase();
+                config.listeners = Ext.Object.merge(config.listeners || {}, {
+                    [listener]: value
+                });
+            }
+        });
     }
 
     makeSetter(prop) {

@@ -15,7 +15,8 @@
      *      ]
      */
   "requires": [
-    "font-awesome"
+    "font-awesome",
+    "reactjs-theme"
   ],
   /**
      * The relative path to the application's markup file (html, jsp, asp, etc.).
