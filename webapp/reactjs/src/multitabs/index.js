@@ -1,0 +1,1 @@
+export { MultiTabs } from './MultiTabs';

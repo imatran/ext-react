@@ -1,0 +1,39 @@
+.demo-view {
+    display: flex;
+    height: inherit;
+    overflow: scroll;
+}
+
+.container {
+    width: 790px;
+}
+
+.left {
+    float: left;
+    width: 63%;
+    padding-right: 8px;
+}
+
+.right {
+    float: right;
+    width: 37%;
+}
+
+.divider {
+    border-left: 1px solid #d0d0d0;
+    padding-right: 8px;
+}
+
+.border-panel {
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.spacer-m {
+    height: 8px;
+}
+
+.spacer-s {
+    height: 4px;
+}

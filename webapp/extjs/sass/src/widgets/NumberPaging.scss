@@ -1,0 +1,20 @@
+.number-paging {
+  background-color: transparent;
+
+  a {
+    text-decoration: none;
+  }
+
+  .label {
+    padding-left: 3px;
+    top: 1px !important;
+  }
+
+  .selected {
+    font-weight: 500;
+  }
+
+  .env-nav {
+    color: #919191;
+  }
+}
