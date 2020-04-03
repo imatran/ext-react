@@ -27,6 +27,6 @@ On the ReactJS side:
 
 **<h2>Usage</h2>**
 You can view the demo page that were built with the code in this repository:
-https://ext-react.github.io/ext-react/demo/index.html
+https://imatran.github.io/ext-react/demo/index.html
 
 Look at the code in src to learn how to write ExtJS code in React/JSX, starting with `reactjs/src/DemoView.js`.
