@@ -8,33 +8,33 @@ Ext.define('React.widgets.NumberPaging', {
 
     store: null,
     height: 32,
+    padding: 0,
     cls: 'number-paging',
 
     initComponent: function() {
-        this.callParent(arguments);
-
-        if(this.store) {
-            this.setStore(this.store);
-        }
-    },
-
-    setStore: function(store) {
         let me = this;
 
-        me.store = store;
-        me.removeAll();
-        me.add(this.getPagingItems());
-        me.setHeight(store.getTotalCount() <= store.getPageSize() ? 0 : this.height);
+        me.callParent(arguments);
+        me.initStore();
+    },
 
-        me.mon(store, 'datachanged', (store) => {
-            if(store.getTotalCount() <= store.getPageSize()) {
-                me.setHeight(0);
-            } else {
-                me.setHeight(this.height);
-                me.removeAll();
-                me.add(me.getPagingItems());
-            }
-        });
+    initStore: function() {
+        let me = this;
+
+        if(me.store) {
+            me.removeAll();
+            me.add(me.getPagingItems());
+
+            me.mon(me.store, 'datachanged', (store) => {
+                if(store.getTotalCount() <= store.getPageSize()) {
+                    me.hide();
+                } else {
+                    me.show();
+                    me.removeAll();
+                    me.add(me.getPagingItems());
+                }
+            });
+        }
     },
 
     getPagingItems: function() {

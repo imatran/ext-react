@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox } from 'lib/modules';
+import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging } from 'lib/modules';
 import { DataStore } from './DataStore';
 import { AgeGroups } from './AgeGroups';
 
@@ -32,19 +32,15 @@ export class Personnel extends React.Component {
         return(
             <>
                 <Grid {...panelProps}
-                      store={this.dataStore.store}
+                      store={this.dataStore.pagedStore}
                       onBoxReady={this.onGridReady.bind(this)}
                 >
 
                     <Column
                         text={'Name'}
                         dataIndex={'name'}
-                        flex={1}
+                        flex={1.2}
                         editor={'textfield'}
-                        // listeners={{
-                        //     focusenter: () => { console.log('focusenter'); }
-                        // }}
-                        onFocusEnter={() => { console.log('focusenter'); }}
                     />
 
                     <Column
@@ -63,13 +59,13 @@ export class Personnel extends React.Component {
                     <Column
                         text={'Phone'}
                         dataIndex={'phone'}
-                        flex={1.2}
+                        flex={1.5}
                     />
 
                     <Column
                         text={'Email'}
                         dataIndex={'email'}
-                        flex={1.5}
+                        flex={2}
                     />
 
                     <ActionColumn
@@ -90,7 +86,9 @@ export class Personnel extends React.Component {
                             layout={{type: 'hbox', pack: 'center'}}
                             flex={1}
                         >
-                            <div style={{fontSize: '9px'}}>Rendered by React</div>
+                                <NumberPaging
+                                    store={this.dataStore.pagedStore}
+                                />
                         </Container>
 
                         <Button

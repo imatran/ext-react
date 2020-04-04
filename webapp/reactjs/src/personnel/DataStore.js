@@ -1,4 +1,5 @@
 import { AgeGroups } from './AgeGroups';
+import data from './data.json';
 
 Ext.require([
     'Ext.data.Model',
@@ -11,9 +12,28 @@ export class DataStore {
             fields: ['name', 'email', 'phone']
         });
 
+        this.pagedStore = Ext.create('Ext.data.Store', {
+            model: model,
+            proxy: {
+                type: 'memory',
+                enablePaging: true
+            }
+        });
+
         this.store = Ext.create('Ext.data.Store', {
             model: model,
-            data: []
+            autoLoad: true,
+            data: data,
+            listeners: {
+                load: (store) => {
+                    this.pagedStore.getProxy().setData(store.getRange());
+                    this.pagedStore.loadPage(1);
+                },
+                datachanged: (store) => {
+                    this.pagedStore.getProxy().setData(store.getRange());
+                    this.pagedStore.loadPage(Math.ceil(store.getCount() / store.getPageSize()));
+                }
+            }
         });
 
         this.ageGroups = (new AgeGroups()).store.getRange();
@@ -30,12 +50,12 @@ export class DataStore {
             nxx = `10${count % 10}`,
             xxxx = `10${(count % 10) + 10}`;
 
-        return this.store.add({
+        this.store.add({
             name: `User ${index}`,
             age: age.get('value'),
             email: `user${index}@home.now`,
             phone: `(${npa}) ${nxx}-${xxxx}`
-        })[0];
+        });
     }
 
     save() {

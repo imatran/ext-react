@@ -2,4 +2,3 @@ export const ADD_RECORD = 'ADD_RECORD';
 export const REMOVE_RECORD = 'REMOVE_RECORD';
 export const SAVE_CHANGES = 'SAVE_CHANGES';
 export const CANCEL_CHANGES = 'CANCEL_CHANGES';
-export const CANNOT_REMOVE = 'CANNOT_REMOVE';
