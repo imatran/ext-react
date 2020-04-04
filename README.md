@@ -23,7 +23,7 @@ On the ExtJS side:
 On the ReactJS side:
 - All React fragments are rendered in `reactjs/src/DemoView.js`.
 - Each React fragment is defined in `reactjs/src` folder
-- All `reactified` ExtJS components are defined in `reactjs/lib/modules.js`. They are all extended from `reactjs/lib/ExtJSComponent.js`. You can add other ExtJS components to be `reactified` in `reactjs/lib/modules.js`.
+- All `reactified` ExtJS components are defined in `reactjs/lib/modules.js`. They are all extended from `reactjs/lib/ExtComponent.js`. You can add other ExtJS components to be `reactified` in `reactjs/lib/modules.js`.
 
 **<h2>Usage</h2>**
 You can view the demo page that were built with the code in this repository:
