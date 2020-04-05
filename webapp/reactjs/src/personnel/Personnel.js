@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging } from 'lib/modules';
+import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging, TextField } from 'lib/modules';
 import { DataStore } from './DataStore';
 import { AgeGroups } from './AgeGroups';
 
@@ -21,7 +21,6 @@ export class Personnel extends React.Component {
     }
 
     render() {
-
         const panelProps = {
             height: this.props.height,
             emptyText: '<div style="text-align: center;"><i>No data to display.</i></div>',
@@ -40,7 +39,11 @@ export class Personnel extends React.Component {
                         text={'Name'}
                         dataIndex={'name'}
                         flex={1.2}
-                        editor={'textfield'}
+                        editor={
+                            <TextField
+                                allowBlank={false}
+                            />
+                        }
                     />
 
                     <Column
@@ -52,6 +55,7 @@ export class Personnel extends React.Component {
                                 store={this.ageGroups.store}
                                 displayField={'value'}
                                 editable={false}
+                                onSelect={(field) => { field.blur(); }}
                             />
                         }
                     />
@@ -73,10 +77,10 @@ export class Personnel extends React.Component {
                         width={25}
                         menuDisabled={true}
                         hideable={false}
-                        handler={this.onDelete.bind(this)}
+                        handler={this.onRemove.bind(this)}
                     />
 
-                    <Toolbar dock='bottom' ui='footer'>
+                    <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}>
                         <Button
                             text={'Add'}
                             handler={this.onAdd.bind(this)}
@@ -106,14 +110,11 @@ export class Personnel extends React.Component {
                 </Grid>
             </>
         );
-
     }
 
     onGridReady(grid) {
-        this.grid = grid;
-
-        grid.store.on('datachanged', this.onDataChanged, this);
-        grid.store.on('commit', this.onDataChanged, this);
+        this.dataStore.ownerGrid = grid;
+        grid.store.on('update', this.onDataChanged, this);
     }
 
     onDataChanged() {
@@ -123,29 +124,24 @@ export class Personnel extends React.Component {
         }
     }
 
-    selectLastRecord() {
-        const record = this.dataStore.last();
-        record && this.grid.ensureVisible(record, {select: true, animate: false});
-        this.grid.getView().refresh();
-    }
-
     onAdd() {
         this.dataStore.add();
-        this.selectLastRecord();
+        this.onDataChanged();
     }
 
-    onDelete(view, rowIdx, colIdx, item, e, record) {
-        record.drop();
+    onRemove(view, rowIdx, colIdx, item, e, record) {
+        this.dataStore.remove(record);
+        this.onDataChanged();
     }
 
     onSave() {
         this.dataStore.save();
-        this.selectLastRecord();
+        this.onDataChanged();
     }
 
     onCancel() {
         this.dataStore.cancel();
-        this.selectLastRecord();
+        this.onDataChanged();
     }
 
 }

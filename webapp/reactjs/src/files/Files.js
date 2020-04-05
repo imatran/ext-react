@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Fill, Toolbar, Tree, TreeColumn } from 'lib/modules';
+import { Button, Fill, Toolbar, Tree, TreeColumn, TextField } from 'lib/modules';
 import { Store } from './Store';
 
 Ext.require([
@@ -44,10 +44,14 @@ export class Files extends React.Component {
                     <TreeColumn
                         dataIndex={'name'}
                         flex={1}
-                        editor={'textfield'}
+                        editor={
+                            <TextField
+                                allowBlank={false}
+                            />
+                        }
                     />
 
-                    <Toolbar dock='bottom' ui='footer'
+                    <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}
                         hidden={this.state.disableSave}
                     >
                         <Fill flex={1} />

@@ -7,7 +7,8 @@ Ext.define('React.overrides.form.field.Base', {
     listeners: {
         afterrender: function(field) {
             field.inputEl.set({
-                autocomplete: 'disabled'
+                autocomplete: 'disabled',
+                spellcheck: false
             });
         }
     }

@@ -1,5 +1,6 @@
 import { ADD_RECORD, REMOVE_RECORD } from '../constants';
 import { SAVE_CHANGES, CANCEL_CHANGES } from '../constants';
+import { DATA_CHANGED } from '../constants';
 import { DataStore } from 'src/personnel/DataStore';
 
 const initialState = {
@@ -9,13 +10,6 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     const dataStore = state.dataStore;
-    const ownerGrid = dataStore.ownerGrid;
-
-    const selectLastRecord = () => {
-        const record = dataStore.last();
-        record && ownerGrid.ensureVisible(record, {select: true, animate: false});
-        ownerGrid.getView().refresh();
-    };
 
     const nextState = () => {
         return Object.assign({}, state, {
@@ -25,24 +19,25 @@ export const reducer = (state = initialState, action) => {
 
     if(action.type === ADD_RECORD) {
         dataStore.add();
-        selectLastRecord();
         return nextState();
     }
 
     if(action.type === REMOVE_RECORD) {
-        action.record.drop();
+        dataStore.remove(action.record);
         return nextState();
     }
 
     if(action.type === SAVE_CHANGES) {
         dataStore.save();
-        selectLastRecord();
         return nextState();
     }
 
     if(action.type === CANCEL_CHANGES) {
         dataStore.cancel();
-        selectLastRecord();
+        return nextState();
+    }
+
+    if(action.type === DATA_CHANGED) {
         return nextState();
     }
 

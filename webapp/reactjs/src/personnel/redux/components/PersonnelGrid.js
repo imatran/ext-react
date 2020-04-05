@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar } from 'lib/modules';
-import { addRecord, removeRecord, saveChanges, cancelChanges } from '../actions';
+import { Container, Grid, Column, ActionColumn, Button, Toolbar, TextField } from 'lib/modules';
+import { addRecord, removeRecord, saveChanges, cancelChanges, dataChanged } from '../actions';
 
 Ext.require([
     'Ext.grid.plugin.CellEditing'
@@ -31,20 +31,27 @@ const ConnectedPersonnelGrid = props => {
         props.cancelChanges();
     };
 
+    const onGridReady = (grid) => {
+        props.dataStore.ownerGrid = grid;
+        grid.store.on('update', props.dataChanged);
+    };
+
     return(
         <>
             <Grid {...panelProps}
                   store={props.dataStore.store}
-                  onBoxReady={grid => {
-                      props.dataStore.ownerGrid = grid;
-                  }}
+                  onBoxReady={onGridReady}
             >
 
                 <Column
                     text={'Name'}
                     dataIndex={'name'}
                     flex={1}
-                    editor={'textfield'}
+                    editor={
+                        <TextField
+                            allowBlank={false}
+                        />
+                    }
                 />
 
                 <Column
@@ -67,7 +74,7 @@ const ConnectedPersonnelGrid = props => {
                     handler={onDelete}
                 />
 
-                <Toolbar dock='bottom' ui='footer'>
+                <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}>
                     <Button
                         text={'Add'}
                         handler={onAdd}
@@ -109,7 +116,8 @@ const mapDispatchToProps = (dispatch) => {
         addRecord: (record) => { dispatch(addRecord(record)); },
         removeRecord: (record) => { dispatch(removeRecord(record)); },
         saveChanges: () => { dispatch(saveChanges()); },
-        cancelChanges: () => { dispatch(cancelChanges()); }
+        cancelChanges: () => { dispatch(cancelChanges()); },
+        dataChanged: () => { setTimeout(() => { dispatch(dataChanged()) }, 1); }
     };
 };
 
