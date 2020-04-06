@@ -65,7 +65,7 @@ export default class ExtComponent extends React.Component {
     }
 
     updateChildrenProps(component, props) {
-        const children = Ext.isArray(props.children) ? props.children : [props.children];
+        const children = React.Children.toArray(props.children);
         const items = Ext.Array.merge(
             component.items && component.items.items || [],
             component.dockedItems && component.dockedItems.items || []

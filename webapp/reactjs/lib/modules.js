@@ -5,6 +5,7 @@ import ExtComponent from "lib/ExtComponent";
 
 Ext.require([
     'Ext.button.Button',
+    'Ext.button.Segmented',
     'Ext.container.Container',
     'Ext.form.Label',
     'Ext.form.field.Checkbox',
@@ -13,6 +14,7 @@ Ext.require([
     'Ext.form.field.Display',
     'Ext.form.field.Number',
     'Ext.form.field.Text',
+    'Ext.form.field.TextArea',
     'Ext.panel.Panel',
     'Ext.grid.Panel',
     'Ext.tab.Panel',
@@ -72,6 +74,11 @@ export class Button extends ExtComponent {
         return 'Ext.button.Button';
     }
 }
+export class SegmentedButton extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.button.Segmented';
+    }
+}
 export class Label extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.Label';
@@ -85,6 +92,11 @@ export class DisplayField extends ExtComponent {
 export class NumberField extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Number';
+    }
+}
+export class TextArea extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.form.field.TextArea';
     }
 }
 export class TextField extends ExtComponent {
