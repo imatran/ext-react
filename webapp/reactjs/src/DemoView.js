@@ -48,8 +48,6 @@ export class DemoView extends React.Component {
                             <Hello/>
                         </div>
 
-                        <div className='spacer-m'/>
-
                         <Clock/>
 
                     </div>

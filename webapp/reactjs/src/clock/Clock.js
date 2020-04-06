@@ -1,4 +1,5 @@
 import React from 'react';
+import { Label } from 'lib/modules';
 
 export class Clock extends React.Component {
 
@@ -8,13 +9,11 @@ export class Clock extends React.Component {
     }
 
     render() {
-
         return (
-            <div className='small-font'>
-                Time: {this.state.date.toDateString()} {this.state.date.toLocaleTimeString()}.
-            </div>
+            <Label
+                text={`Time: ${this.state.date.toDateString()} ${this.state.date.toLocaleTimeString()}.`}
+            />
         );
-
     }
 
     componentDidMount() {

@@ -31,12 +31,10 @@ export class MultiTabs extends React.Component {
                     </Container>
 
                     <Container title='Personnels'>
-                        <div>
-                            <PersonnelRedux
-                                ref={c => this.reduxGridRef = c}
-                                height={this.state.tabContentHeight}
-                            />
-                        </div>
+                        <PersonnelRedux
+                            ref={c => this.reduxGridRef = c}
+                            height={this.state.tabContentHeight}
+                        />
                     </Container>
 
                     <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>

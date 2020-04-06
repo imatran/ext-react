@@ -55,7 +55,8 @@ export class DataStore {
     }
 
     add() {
-        let count = this.store.last().get('index') + 1,
+        let last = this.store.last(),
+            count = last ? last.get('index') + 1 : 1,
             index = count < 10 ? `0${count}` : count,
             age = this.ageGroups[Math.floor(Math.random() * Math.floor(3))],
             npa = `5${Math.floor(count/10) + 10}`,
@@ -81,6 +82,7 @@ export class DataStore {
 
     save() {
         this.store.commitChanges();
+        this.pagedStore.loadPage(this.pagedStore.currentPage);
     }
 
     cancel() {
@@ -93,7 +95,6 @@ export class DataStore {
         } else {
             this.pagedStore.loadPage(this.pagedStore.currentPage);
         }
-
     }
 
     last() {
@@ -101,13 +102,12 @@ export class DataStore {
     }
 
     dirty() {
-        return this.store.getModifiedRecords().length !== 0
-            || this.store.getRemovedRecords().length !== 0;
+        return this.store.getModifiedRecords().length !== 0 || this.store.getRemovedRecords().length !== 0;
     }
 
     ensureVisible(last) {
-        const selected = last ? this.pagedStore.last() : this.ownerGrid.getSelection()[0] || this.pagedStore.last();
-        this.ownerGrid.ensureVisible(selected, {select: true, animate: false});
+        const selected = last ? this.store.last() : this.ownerGrid.getSelection()[0];
+        selected && this.ownerGrid.ensureVisible(selected, {select: true, animate: false});
         this.ownerGrid.getView().refresh();
     }
 }
