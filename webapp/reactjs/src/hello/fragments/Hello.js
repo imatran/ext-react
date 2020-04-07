@@ -20,11 +20,8 @@ export class Hello extends React.Component {
         // console.log('Hello');
 
         return (
-
             <div className={'main'}>
-
                 <Container>
-
                     <Hello1 helloName={this.state.helloName}/>
 
                     <Container>
@@ -63,11 +60,8 @@ export class Hello extends React.Component {
                             onChange={this.onHelloInputChange.bind(this)}
                         />
                     </Container>
-
                 </Container>
-
             </div>
-
         );
 
     }

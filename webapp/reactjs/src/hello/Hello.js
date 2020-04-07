@@ -22,11 +22,8 @@ export class Hello extends React.Component {
         // console.log('Hello');
 
         return (
-
             <div className='main'>
-
                 <Container>
-
                     <Container layout='hbox'>
                         <Container flex={1}>
                             <Label
@@ -118,11 +115,8 @@ export class Hello extends React.Component {
                             onChange={this.onHelloInputChange.bind(this)}
                         />
                     </Container>
-
                 </Container>
-
             </div>
-
         );
 
     }

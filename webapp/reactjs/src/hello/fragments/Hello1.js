@@ -15,9 +15,7 @@ export class Hello1 extends React.Component {
         // console.log('Hello1');
 
         return(
-
             <Container layout='hbox'>
-
                 <Container flex={1}>
                     <Label
                         text={`Hello ${this.props.helloName} 1!`}
@@ -33,9 +31,7 @@ export class Hello1 extends React.Component {
                     handler={this.onHideLabel.bind(this)}
                     flex={1}
                 />
-
             </Container>
-
         );
 
     }

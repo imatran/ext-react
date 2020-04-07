@@ -18,9 +18,7 @@ export class Hello3 extends React.Component {
         // console.log('Hello 3');
 
         return(
-
             <Container layout='hbox'>
-
                 <Container flex={1}>
                     <Container>
                         <Label
@@ -37,14 +35,12 @@ export class Hello3 extends React.Component {
                     editable={false}
                     onChange={this.onChange.bind(this)}
                 />
-
             </Container>
-
         );
 
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps, provState, snapshot) {
         if(prevProps.helloName !== this.props.helloName) {
             this.setState({helloName: this.props.helloName});
         }
