@@ -8,6 +8,7 @@ Ext.application({
     name: 'React',
 
     requires: [
+        'Ext.plugin.Viewport',
         'React.ExtRequires'
     ],
 

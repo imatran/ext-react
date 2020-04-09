@@ -2,14 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Container, Label, TextField } from 'lib/modules';
 import { updateName, resetBadName } from '../actions';
-import { useSnackbar } from 'notistack';
+import { NotificationManager } from 'react-notifications';
 
 const ConnectedProducer1 = props => {
-    const { enqueueSnackbar } = useSnackbar();
-
     useEffect(() => {
         if(props.badName) {
-            enqueueSnackbar(`Bad name: ${props.badName}`);
+            NotificationManager.error(`Bad name: ${props.badName}`, null, 3000);
             props.resetBadName();
         }
     });

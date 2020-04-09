@@ -6,6 +6,9 @@ import { Files } from './files';
 import { MultiTabs } from './multitabs';
 import '../css/DemoView.css';
 
+import { NotificationContainer } from 'react-notifications';
+import 'react-notifications/lib/notifications.css';
+
 export class DemoView extends React.Component {
 
     constructor(props) {
@@ -54,6 +57,7 @@ export class DemoView extends React.Component {
 
                 </div>
 
+                <NotificationContainer/>
             </div>
         );
 

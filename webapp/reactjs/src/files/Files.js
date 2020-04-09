@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Fill, Toolbar, Tree, TreeColumn, TextField } from 'lib/modules';
-import { Store } from './Store';
+import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, Grid } from 'lib/modules';
+import { DataStore } from './DataStore';
 
 Ext.require([
     'Ext.grid.plugin.CellEditing'
@@ -15,19 +15,10 @@ export class Files extends React.Component {
             disableSave: true
         };
 
-        this.store = Store.create({
-            listeners: {
-                datachanged: (store) => {
-                    this.setState({
-                        disableSave: store.getModifiedRecords().length === 0
-                    });
-                }
-            }
-        });
+        this.dataStore = new DataStore();
     }
 
     render() {
-
         const panelProps = {
             height: this.props.height,
             rootVisible: false,
@@ -38,7 +29,8 @@ export class Files extends React.Component {
         return(
             <>
                 <Tree {...panelProps}
-                      store={this.store}
+                      store={this.dataStore.store}
+                      onBoxReady={this.onGridReady.bind(this)}
                       onBeforeEdit={this.onBeforeEdit.bind(this)}
                 >
                     <TreeColumn
@@ -69,21 +61,27 @@ export class Files extends React.Component {
                 </Tree>
             </>
         );
-
     }
 
-    componentDidMount() {
-        this.store.commitChanges();
+    onGridReady(grid) {
+        grid.store.on('update', this.onDataChanged, this);
+    }
+
+    onDataChanged() {
+        const disableSave = !this.dataStore.dirty();
+        if(this.state.disableSave !== disableSave) {
+            this.setState({ disableSave: disableSave });
+        }
     }
 
     onSave() {
-        this.store.commitChanges();
-        this.store.fireEvent('datachanged', this.store);
+        this.dataStore.save();
+        this.onDataChanged();
     }
 
     onCancel() {
-        this.store.rejectChanges();
-        this.store.fireEvent('datachanged', this.store);
+        this.dataStore.cancel();
+        this.onDataChanged();
     }
 
     onBeforeEdit(editor, context) {

@@ -41,6 +41,19 @@ module.exports = async function (env) {
                 'style-loader',
                 'css-loader'
             ]
+        },
+        {
+            test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+            use: [
+                {
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: 'fonts/',
+                        publicPath: 'resources/fonts',
+                    }
+                }
+            ]
         }
     ];
 
@@ -52,8 +65,8 @@ module.exports = async function (env) {
     };
 
     const output = {
-        path: Path.resolve(__dirname, '../extjs/resources/js'),
-        filename: 'bundle.js'
+        path: Path.resolve(__dirname, '../extjs/resources'),
+        filename: 'js/bundle.js'
     };
 
     const resolve = {

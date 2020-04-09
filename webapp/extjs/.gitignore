@@ -1,6 +1,8 @@
 /ext
+/ext-6.2.0
 /build
 bootstrap.*
+resources/fonts
 resources/js/bundle.js
 resources/js/bundle.js.map
 app/ExtRequires.js
