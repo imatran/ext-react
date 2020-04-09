@@ -1,8 +1,10 @@
 'use strict';
 
 const repoName = 'ext';
-const repoVersion = '6.7.0';
-const repoSource = `http://ulv-torbld01:9081/artifactory/js-libraries/${repoName}/${repoVersion}`;
+// const repoVersion = '6.7.0';
+// const repoSource = `http://9.31.24.224:9081/artifactory/js-libraries/${repoName}/${repoVersion}`;
+const repoVersion = '6.2.0-gpl';
+const repoSource = 'http://cdn.sencha.com/ext/gpl';
 
 const path = require('path');
 const admZip = require('adm-zip');

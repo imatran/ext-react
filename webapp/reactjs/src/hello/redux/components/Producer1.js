@@ -7,7 +7,7 @@ import { NotificationManager } from 'react-notifications';
 const ConnectedProducer1 = props => {
     useEffect(() => {
         if(props.badName) {
-            NotificationManager.error(`Bad name: ${props.badName}`, null, 3000);
+            NotificationManager.error(`Bad name: ${props.badName}`, null, 0);
             props.resetBadName();
         }
     });
