@@ -1,18 +1,16 @@
 **<h1>ExtJS/ReactJS application</h1>**
 
-This application is to demonstrate how to write an ExtJS application using React/JSX. You will need to have an existing copy of the ExtJS framework for this to work. Note it also works with the ExtJS Community Edition, GPL-licensed which can be downloaded from here http://cdn.sencha.com/ext/gpl/ext-6.2.0-gpl.zip
+This application is to demonstrate how to write an ExtJS application using `React/JSX` without `ExtReact`. The application was built using the `ExtJS Community Edition`, `GPL-licensed` (http://cdn.sencha.com/ext/gpl/ext-6.2.0-gpl.zip). Just follow the Installation instructions below to download and install all necessary requirements.
 
 **<h2>Requirements</h2>**
 - React >= 16.x
 - ExtJS >= 6.x
 
 **<h2>Installation</h2>**
-- copy ExtJS framework to `webapp/extjs/ext`
-- make neccessary change to `webapp/extjs/workspace.json` to the path and version number of the ExtJS framework.
 - cd `webapp/reactjs`
-- npm install
-- npm run sencha
-- npm run dev
+- `npm install` - to install node dependencies
+- `npm run framework` - to download, extract and build ext-6.2.0-gpl framework
+- `npm run dev` - to start `webpack-dev-server`
 - point your web browser to http://localhost:3000
 
 When you run `npm run dev`, the `webpack-dev-server` will monitor for changes on the ReactJS side and build the output file in `extjs/resources/js/bundle.js`.
