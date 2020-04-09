@@ -1,6 +1,6 @@
 **<h1>ExtJS/ReactJS application</h1>**
 
-This application is to demonstrate how to write an ExtJS application using React/JSX. You will need to have an existing copy of the ExtJS framework for this to work. Note it also works with ExtJS Community Edition, GPL-licensed which can be downloaded from here https://github.com/bjornharrtell/extjs
+This application is to demonstrate how to write an ExtJS application using React/JSX. You will need to have an existing copy of the ExtJS framework for this to work. Note it also works with the ExtJS Community Edition, GPL-licensed which can be downloaded from here http://cdn.sencha.com/ext/gpl/ext-6.2.0-gpl.zip
 
 **<h2>Requirements</h2>**
 - React >= 16.x
