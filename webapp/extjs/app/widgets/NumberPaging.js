@@ -1,3 +1,6 @@
+/**
+ * Created by atran on 2018-06-12.
+ */
 Ext.define('React.widgets.NumberPaging', {
     extend: 'Ext.toolbar.Toolbar',
     xtype: 'numberpagingtoolbar',

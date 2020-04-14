@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Label, TextField, Button, Checkbox, Radio, Combobox } from 'lib/modules';
+import { ClearTextField, MenuTool } from 'lib/modules';
 import { Store } from './Store';
 import './Hello.css';
 
@@ -74,13 +75,36 @@ export class Hello extends React.Component {
                                 </Container>
                             </Container>
 
-                            <Combobox
-                                store={this.store}
-                                displayField={'value'}
-                                flex={1}
-                                editable={false}
-                                onChange={this.onChange.bind(this)}
-                            />
+                            <Container layout='hbox' flex={1}>
+                                <Combobox
+                                    store={this.store}
+                                    displayField={'value'}
+                                    flex={1}
+                                    editable={false}
+                                    onChange={this.onChange.bind(this)}
+                                />
+
+                                <MenuTool
+                                    iconCls='x-fa fa-ellipsis-h'
+                                    margin='8 0 0 10'
+                                    menu={[{
+                                        text: 'Jane Doe',
+                                        indentNoSeparatorCls: 'indent-no-separator',
+                                        handler: this.onHelloMenuSubmit.bind(this),
+                                        width: 80
+                                    }, {
+                                        text: 'John Doe',
+                                        indentNoSeparatorCls: 'indent-no-separator',
+                                        handler: this.onHelloMenuSubmit.bind(this),
+                                        width: 80
+                                    }, {
+                                        text: 'World',
+                                        indentNoSeparatorCls: 'indent-no-separator',
+                                        handler: this.onHelloMenuSubmit.bind(this),
+                                        width: 80
+                                    }]}
+                                />
+                            </Container>
                         </Container>
                     </Container>
 
@@ -109,7 +133,7 @@ export class Hello extends React.Component {
                             />
                         </Container>
 
-                        <TextField
+                        <ClearTextField
                             flex={1}
                             value={this.state.helloInput}
                             onChange={this.onHelloInputChange.bind(this)}
@@ -122,6 +146,9 @@ export class Hello extends React.Component {
     }
 
     onHelloNameChange(field, value) {
+        console.log(field);
+        console.log(value);
+
         this.setState({
             helloName: value,
             comboValue: value
@@ -137,6 +164,12 @@ export class Hello extends React.Component {
             helloName: this.state.helloInput,
             comboValue: this.state.helloInput,
             helloInput: null
+        });
+    }
+
+    onHelloMenuSubmit(menu) {
+        this.setState({
+            comboValue: menu.text
         });
     }
 

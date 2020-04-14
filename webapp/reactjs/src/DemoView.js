@@ -75,7 +75,7 @@ export class DemoView extends React.Component {
         return {
             gridHeight: this.ownerView.getHeight() / 3,
             treeHeight: this.ownerView.getHeight() / 3,
-            tabHeight: this.ownerView.getHeight() / 3 + 44
+            tabHeight: this.ownerView.getHeight() / 3 + 40
         };
     }
 

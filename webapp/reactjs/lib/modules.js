@@ -16,6 +16,7 @@ Ext.require([
     'Ext.form.field.Text',
     'Ext.form.field.TextArea',
     'Ext.panel.Panel',
+    'Ext.panel.Tool',
     'Ext.grid.Panel',
     'Ext.tab.Panel',
     'Ext.tree.Panel',
@@ -26,7 +27,9 @@ Ext.require([
     'Ext.toolbar.Paging',
     'Ext.toolbar.Spacer',
     'Ext.toolbar.Toolbar',
-    'React.widgets.NumberPaging'
+    'React.widgets.NumberPaging',
+    'React.widgets.ClearTextField',
+    'React.widgets.MenuTool'
 ]);
 
 export class Container extends ExtComponent {
@@ -37,6 +40,11 @@ export class Container extends ExtComponent {
 export class Panel extends ExtComponent {
    getComponentClass() {
         return 'Ext.panel.Panel';
+    }
+}
+export class Tool extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.panel.Tool';
     }
 }
 export class Grid extends ExtComponent {
@@ -142,5 +150,15 @@ export class Paging extends ExtComponent {
 export class NumberPaging extends ExtComponent {
     getComponentClass() {
         return 'React.widgets.NumberPaging';
+    }
+}
+export class ClearTextField extends ExtComponent {
+    getComponentClass() {
+        return 'React.widgets.ClearTextField';
+    }
+}
+export class MenuTool extends ExtComponent {
+    getComponentClass() {
+        return 'React.widgets.MenuTool';
     }
 }
