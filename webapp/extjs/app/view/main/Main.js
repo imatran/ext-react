@@ -16,8 +16,9 @@ Ext.define('React.view.main.Main', {
 
     items: [{
         xtype: 'container',
-        flex: 1,
         layout: { type: 'hbox', align: 'stretch' },
+        flex: 1,
+        scrollable: true,
 
         items: [{
             xtype: 'react',

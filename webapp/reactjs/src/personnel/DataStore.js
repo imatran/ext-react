@@ -82,6 +82,7 @@ export class DataStore {
 
     save() {
         this.store.commitChanges();
+        this.pagedStore.commitChanges();
         this.pagedStore.loadPage(this.pagedStore.currentPage);
     }
 
