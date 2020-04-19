@@ -1,0 +1,17 @@
+.x-action-col-icon {
+  font-size: 12px;
+  color: #d3d3d3;
+  padding: 1px;
+}
+
+.x-action-col-icon:hover {
+  color: #5fa2dd;
+}
+
+.rollover-action-col > .x-grid-cell-inner > .x-action-col-icon {
+  visibility: hidden;
+}
+
+.x-grid-item-over .rollover-action-col > .x-grid-cell-inner > .x-action-col-icon {
+  visibility: visible;
+}

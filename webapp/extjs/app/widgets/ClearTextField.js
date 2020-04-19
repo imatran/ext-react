@@ -17,7 +17,7 @@ Ext.define('React.widgets.ClearTextField', {
 
         me.setTriggers({
             clear: {
-                cls: 'x-fa fa-times',
+                cls: 'x-fa fa-times light-icon',
                 hidden: true,
                 handler: this.clear,
                 scope: this

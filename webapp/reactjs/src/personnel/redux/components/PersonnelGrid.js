@@ -19,7 +19,7 @@ const ConnectedPersonnelGrid = props => {
         props.addRecord();
     };
 
-    const onDelete = (view, rowIdx, colIdx, item, e, record) => {
+    const onRemove = (view, rowIdx, colIdx, item, e, record) => {
         props.removeRecord(record);
     };
 
@@ -68,10 +68,11 @@ const ConnectedPersonnelGrid = props => {
 
                 <ActionColumn
                     iconCls={'x-fa fa-trash'}
+                    tdCls={'rollover-action-col'}
                     width={25}
                     menuDisabled={true}
                     hideable={false}
-                    handler={onDelete}
+                    handler={onRemove}
                 />
 
                 <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}>

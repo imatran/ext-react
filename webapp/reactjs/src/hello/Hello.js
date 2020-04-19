@@ -89,17 +89,14 @@ export class Hello extends React.Component {
                                     margin='8 0 0 10'
                                     menu={[{
                                         text: 'Jane Doe',
-                                        indentNoSeparatorCls: 'indent-no-separator',
                                         handler: this.onHelloMenuSubmit.bind(this),
                                         width: 80
                                     }, {
                                         text: 'John Doe',
-                                        indentNoSeparatorCls: 'indent-no-separator',
                                         handler: this.onHelloMenuSubmit.bind(this),
                                         width: 80
                                     }, {
                                         text: 'World',
-                                        indentNoSeparatorCls: 'indent-no-separator',
                                         handler: this.onHelloMenuSubmit.bind(this),
                                         width: 80
                                     }]}
@@ -146,9 +143,6 @@ export class Hello extends React.Component {
     }
 
     onHelloNameChange(field, value) {
-        console.log(field);
-        console.log(value);
-
         this.setState({
             helloName: value,
             comboValue: value

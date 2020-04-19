@@ -20,6 +20,11 @@ export class DataStore {
         return this;
     }
 
+    remove(record) {
+        // this.store.remove(record);
+        record.remove();
+    }
+
     save() {
         this.store.commitChanges();
     }

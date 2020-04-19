@@ -74,6 +74,7 @@ export class Personnel extends React.Component {
 
                     <ActionColumn
                         iconCls={'x-fa fa-trash'}
+                        tdCls={'rollover-action-col'}
                         width={25}
                         menuDisabled={true}
                         hideable={false}

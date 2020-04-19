@@ -1,3 +1,10 @@
+/**
+ * Custom webpack loader to gather all Ext requires
+ * that are being used in React Components.
+ *
+ * @param content
+ * @param map
+ */
 module.exports = function(content, map) {
     const LoaderUtils = require("loader-utils");
     const FileSystem = require('fs');

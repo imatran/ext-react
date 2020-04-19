@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, Grid } from 'lib/modules';
+import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, ActionColumn } from 'lib/modules';
 import { DataStore } from './DataStore';
 
 Ext.require([
@@ -43,6 +43,15 @@ export class Files extends React.Component {
                         }
                     />
 
+                    <ActionColumn
+                        iconCls={'x-fa fa-trash'}
+                        tdCls={'rollover-action-col'}
+                        width={25}
+                        menuDisabled={true}
+                        hideable={false}
+                        handler={this.onRemove.bind(this)}
+                    />
+
                     <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}
                         hidden={this.state.disableSave}
                     >
@@ -72,6 +81,11 @@ export class Files extends React.Component {
         if(this.state.disableSave !== disableSave) {
             this.setState({ disableSave: disableSave });
         }
+    }
+
+    onRemove(view, rowIdx, colIdx, item, e, record) {
+        this.dataStore.remove(record);
+        this.onDataChanged();
     }
 
     onSave() {

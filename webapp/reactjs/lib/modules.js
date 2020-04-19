@@ -4,32 +4,14 @@
 import ExtComponent from "lib/ExtComponent";
 
 Ext.require([
-    'Ext.button.Button',
-    'Ext.button.Segmented',
-    'Ext.container.Container',
-    'Ext.form.Label',
-    'Ext.form.field.Checkbox',
-    'Ext.form.field.ComboBox',
-    'Ext.form.field.Radio',
-    'Ext.form.field.Display',
-    'Ext.form.field.Number',
-    'Ext.form.field.Text',
-    'Ext.form.field.TextArea',
-    'Ext.panel.Panel',
-    'Ext.panel.Tool',
-    'Ext.grid.Panel',
-    'Ext.tab.Panel',
-    'Ext.tree.Panel',
-    'Ext.grid.column.Column',
-    'Ext.grid.column.Action',
-    'Ext.tree.Column',
-    'Ext.toolbar.Fill',
-    'Ext.toolbar.Paging',
-    'Ext.toolbar.Spacer',
-    'Ext.toolbar.Toolbar',
-    'React.widgets.NumberPaging',
-    'React.widgets.ClearTextField',
-    'React.widgets.MenuTool'
+    'Ext.button.Button', 'Ext.button.Segmented', 'Ext.container.Container', 'Ext.form.Label',
+    'Ext.form.field.Checkbox', 'Ext.form.field.ComboBox', 'Ext.form.field.Radio',
+    'Ext.form.field.Display', 'Ext.form.field.Number', 'Ext.form.field.Text', 'Ext.form.field.TextArea',
+    'Ext.panel.Panel', 'Ext.panel.Tool', 'Ext.grid.Panel', 'Ext.tab.Panel', 'Ext.tree.Panel',
+    'Ext.grid.column.Column', 'Ext.grid.column.Action', 'Ext.tree.Column',
+    'Ext.toolbar.Fill', 'Ext.toolbar.Paging', 'Ext.toolbar.Spacer', 'Ext.toolbar.Toolbar',
+    'Ext.window.Window', 'Ext.window.Toast',
+    'React.widgets.NumberPaging', 'React.widgets.ClearTextField', 'React.widgets.MenuTool'
 ]);
 
 export class Container extends ExtComponent {
@@ -145,6 +127,16 @@ export class Spacer extends ExtComponent {
 export class Paging extends ExtComponent {
     getComponentClass() {
         return 'Ext.toolbar.Paging';
+    }
+}
+export class Window extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.window.Window';
+    }
+}
+export class Toast extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.window.Toast';
     }
 }
 export class NumberPaging extends ExtComponent {
