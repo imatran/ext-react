@@ -47,6 +47,11 @@ export class Column extends React.Component {
                         stacked: false,
                         colors: ['#94ad24', '#fd8827'],
 
+                        style: {
+                            opacity: 0.80,
+                            minGapWidth: 10
+                        },
+
                         highlightCfg: {
                             strokeStyle: 'black',
                             radius: 10,

@@ -27,48 +27,46 @@ export class Files extends React.Component {
         };
 
         return(
-            <>
-                <Tree {...panelProps}
-                      store={this.dataStore.store}
-                      onBoxReady={this.onGridReady.bind(this)}
-                      onBeforeEdit={this.onBeforeEdit.bind(this)}
+            <Tree {...panelProps}
+                  store={this.dataStore.store}
+                  onBoxReady={this.onGridReady.bind(this)}
+                  onBeforeEdit={this.onBeforeEdit.bind(this)}
+            >
+                <TreeColumn
+                    dataIndex='name'
+                    flex={1}
+                    editor={
+                        <TextField
+                            allowBlank={false}
+                        />
+                    }
+                />
+
+                <ActionColumn
+                    iconCls='x-fa fa-trash'
+                    tdCls='rollover-action-col'
+                    width={25}
+                    menuDisabled={true}
+                    hideable={false}
+                    handler={this.onRemove.bind(this)}
+                />
+
+                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'
+                    hidden={this.state.disableSave}
                 >
-                    <TreeColumn
-                        dataIndex='name'
-                        flex={1}
-                        editor={
-                            <TextField
-                                allowBlank={false}
-                            />
-                        }
+                    <Fill flex={1} />
+
+                    <Button
+                        text='Save'
+                        handler={this.onSave.bind(this)}
                     />
 
-                    <ActionColumn
-                        iconCls='x-fa fa-trash'
-                        tdCls='rollover-action-col'
-                        width={25}
-                        menuDisabled={true}
-                        hideable={false}
-                        handler={this.onRemove.bind(this)}
+                    <Button
+                        text='Cancel'
+                        handler={this.onCancel.bind(this)}
                     />
-
-                    <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'
-                        hidden={this.state.disableSave}
-                    >
-                        <Fill flex={1} />
-
-                        <Button
-                            text='Save'
-                            handler={this.onSave.bind(this)}
-                        />
-
-                        <Button
-                            text='Cancel'
-                            handler={this.onCancel.bind(this)}
-                        />
-                    </Toolbar>
-                </Tree>
-            </>
+                </Toolbar>
+            </Tree>
         );
     }
 

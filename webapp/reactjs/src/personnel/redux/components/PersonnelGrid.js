@@ -37,71 +37,69 @@ const ConnectedPersonnelGrid = props => {
     };
 
     return(
-        <>
-            <Grid {...panelProps}
-                  store={props.dataStore.store}
-                  onBoxReady={onGridReady}
-            >
+        <Grid {...panelProps}
+              store={props.dataStore.store}
+              onBoxReady={onGridReady}
+        >
 
-                <Column
-                    text='Name'
-                    dataIndex='name'
+            <Column
+                text='Name'
+                dataIndex='name'
+                flex={1}
+                editor={
+                    <TextField
+                        allowBlank={false}
+                    />
+                }
+            />
+
+            <Column
+                text='Phone'
+                dataIndex='phone'
+                flex={1.5}
+            />
+
+            <Column
+                text='Email'
+                dataIndex='email'
+                flex={1.5}
+            />
+
+            <ActionColumn
+                iconCls='x-fa fa-trash'
+                tdCls='rollover-action-col'
+                width={25}
+                menuDisabled={true}
+                hideable={false}
+                handler={onRemove}
+            />
+
+            <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
+                <Button
+                    text='Add'
+                    handler={onAdd}
+                />
+
+                <Container
+                    layout={{type: 'hbox', pack: 'center'}}
                     flex={1}
-                    editor={
-                        <TextField
-                            allowBlank={false}
-                        />
-                    }
+                >
+                    <div style={{fontSize: '9px'}}>Rendered by React/Redux</div>
+                </Container>
+
+                <Button
+                    text='Save'
+                    handler={onSave}
+                    disabled={props.disableSave}
                 />
 
-                <Column
-                    text='Phone'
-                    dataIndex='phone'
-                    flex={1.5}
+                <Button
+                    text='Cancel'
+                    handler={onCancel}
                 />
+            </Toolbar>
 
-                <Column
-                    text='Email'
-                    dataIndex='email'
-                    flex={1.5}
-                />
-
-                <ActionColumn
-                    iconCls='x-fa fa-trash'
-                    tdCls='rollover-action-col'
-                    width={25}
-                    menuDisabled={true}
-                    hideable={false}
-                    handler={onRemove}
-                />
-
-                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
-                    <Button
-                        text='Add'
-                        handler={onAdd}
-                    />
-
-                    <Container
-                        layout={{type: 'hbox', pack: 'center'}}
-                        flex={1}
-                    >
-                        <div style={{fontSize: '9px'}}>Rendered by React/Redux</div>
-                    </Container>
-
-                    <Button
-                        text='Save'
-                        handler={onSave}
-                        disabled={props.disableSave}
-                    />
-
-                    <Button
-                        text='Cancel'
-                        handler={onCancel}
-                    />
-                </Toolbar>
-
-            </Grid>
-        </>
+        </Grid>
     );
 };
 

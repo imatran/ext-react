@@ -19,41 +19,39 @@ export class MultiTabs extends React.Component {
 
     render() {
         return(
-            <>
-                <TabPanel
-                    height={this.props.height}
-                    onTabChange={() => { this.updateGridHeight(); }}
-                >
-                    <Container title='Personnels'>
-                        <Personnel
-                            height={this.state.tabContentHeight}
-                        />
+            <TabPanel
+                height={this.props.height}
+                onTabChange={() => { this.updateGridHeight(); }}
+            >
+                <Container title='Personnels'>
+                    <Personnel
+                        height={this.state.tabContentHeight}
+                    />
+                </Container>
+
+                <Container title='Personnels'>
+                    <PersonnelRedux
+                        ref={c => this.reduxGridRef = c}
+                        height={this.state.tabContentHeight}
+                    />
+                </Container>
+
+                <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
+                    <Container flex={1} scrollable={true}>
+                        <Hello/>
                     </Container>
 
-                    <Container title='Personnels'>
-                        <PersonnelRedux
-                            ref={c => this.reduxGridRef = c}
-                            height={this.state.tabContentHeight}
-                        />
+                    <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React</div>
+                </Container>
+
+                <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
+                    <Container flex={1} scrollable={true}>
+                        <HelloRedux/>
                     </Container>
 
-                    <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
-                        <Container flex={1} scrollable={true}>
-                            <Hello/>
-                        </Container>
-
-                        <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React</div>
-                    </Container>
-
-                    <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
-                        <Container flex={1} scrollable={true}>
-                            <HelloRedux/>
-                        </Container>
-
-                        <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React/Redux</div>
-                    </Container>
-                </TabPanel>
-            </>
+                    <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React/Redux</div>
+                </Container>
+            </TabPanel>
         );
     }
 

@@ -29,87 +29,85 @@ export class Personnel extends React.Component {
         };
 
         return(
-            <>
-                <Grid {...panelProps}
-                      store={this.dataStore.pagedStore}
-                      onBoxReady={this.onGridReady.bind(this)}
-                >
+            <Grid {...panelProps}
+                  store={this.dataStore.pagedStore}
+                  onBoxReady={this.onGridReady.bind(this)}
+            >
 
-                    <Column
-                        text='Name'
-                        dataIndex='name'
-                        flex={1.2}
-                        editor={
-                            <TextField
-                                allowBlank={false}
-                            />
-                        }
+                <Column
+                    text='Name'
+                    dataIndex='name'
+                    flex={1.2}
+                    editor={
+                        <TextField
+                            allowBlank={false}
+                        />
+                    }
+                />
+
+                <Column
+                    text='Age'
+                    dataIndex='age'
+                    flex={1}
+                    editor={
+                        <Combobox
+                            store={this.ageGroups.store}
+                            displayField='value'
+                            editable={false}
+                            onSelect={(field) => { field.blur(); }}
+                        />
+                    }
+                />
+
+                <Column
+                    text='Phone'
+                    dataIndex='phone'
+                    flex={1.5}
+                />
+
+                <Column
+                    text='Email'
+                    dataIndex='email'
+                    flex={2}
+                />
+
+                <ActionColumn
+                    iconCls='x-fa fa-trash'
+                    tdCls='rollover-action-col'
+                    width={25}
+                    menuDisabled={true}
+                    hideable={false}
+                    handler={this.onRemove.bind(this)}
+                />
+
+                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
+                    <Button
+                        text='Add'
+                        handler={this.onAdd.bind(this)}
                     />
 
-                    <Column
-                        text='Age'
-                        dataIndex='age'
+                    <Container
+                        layout={{type: 'hbox', pack: 'center'}}
                         flex={1}
-                        editor={
-                            <Combobox
-                                store={this.ageGroups.store}
-                                displayField='value'
-                                editable={false}
-                                onSelect={(field) => { field.blur(); }}
+                    >
+                            <NumberPaging
+                                store={this.dataStore.pagedStore}
                             />
-                        }
+                    </Container>
+
+                    <Button
+                        text='Save'
+                        handler={this.onSave.bind(this)}
+                        disabled={this.state.disableSave}
                     />
 
-                    <Column
-                        text='Phone'
-                        dataIndex='phone'
-                        flex={1.5}
+                    <Button
+                        text='Cancel'
+                        handler={this.onCancel.bind(this)}
                     />
+                </Toolbar>
 
-                    <Column
-                        text='Email'
-                        dataIndex='email'
-                        flex={2}
-                    />
-
-                    <ActionColumn
-                        iconCls='x-fa fa-trash'
-                        tdCls='rollover-action-col'
-                        width={25}
-                        menuDisabled={true}
-                        hideable={false}
-                        handler={this.onRemove.bind(this)}
-                    />
-
-                    <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
-                        <Button
-                            text='Add'
-                            handler={this.onAdd.bind(this)}
-                        />
-
-                        <Container
-                            layout={{type: 'hbox', pack: 'center'}}
-                            flex={1}
-                        >
-                                <NumberPaging
-                                    store={this.dataStore.pagedStore}
-                                />
-                        </Container>
-
-                        <Button
-                            text='Save'
-                            handler={this.onSave.bind(this)}
-                            disabled={this.state.disableSave}
-                        />
-
-                        <Button
-                            text='Cancel'
-                            handler={this.onCancel.bind(this)}
-                        />
-                    </Toolbar>
-
-                </Grid>
-            </>
+            </Grid>
         );
     }
 
