@@ -19,12 +19,12 @@ export class Pie extends React.Component {
 
     render() {
         return(
-            <Container padding='10 0 0 0'>
+            <Container layout='fit'>
                 <PolarChart
                     store={this.store}
                     height={this.props.height}
                     innerPadding={10}
-                    insetPadding='50 0 10 0'
+                    insetPadding='60 0 00 0'
                     interactions={['rotate']}
 
                     series={[{

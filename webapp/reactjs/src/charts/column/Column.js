@@ -20,11 +20,12 @@ export class Column extends React.Component {
 
     render() {
         return(
-            <Container padding='10 0 0 0'>
+            <Container layout='fit'>
                 <CartesianChart
                     store={this.store}
                     height={this.props.height}
                     innerPadding='25 5 10 5'
+                    insetPadding='10 0 0 0'
 
                     axes={[{
                         type: 'numeric',
@@ -44,7 +45,6 @@ export class Column extends React.Component {
                         xField: 'month',
                         yField: ['high', 'low'],
                         stacked: false,
-
                         colors: ['#94ad24', '#fd8827'],
 
                         highlightCfg: {

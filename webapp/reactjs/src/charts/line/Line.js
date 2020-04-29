@@ -27,6 +27,7 @@ export class Line extends React.Component {
                     store={this.store}
                     height={this.props.height}
                     innerPadding={20}
+                    insetPadding='10 10 0 0'
 
                     axes={[{
                         type: 'numeric',

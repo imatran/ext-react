@@ -20,11 +20,12 @@ export class Bar extends React.Component {
 
     render() {
         return(
-            <Container padding='10 0 0 0'>
+            <Container layout='fit'>
                 <CartesianChart
                     store={this.store}
                     height={this.props.height}
                     innerPadding={10}
+                    insetPadding='10 10 0 0'
                     flipXY={true}
 
                     axes={[{
