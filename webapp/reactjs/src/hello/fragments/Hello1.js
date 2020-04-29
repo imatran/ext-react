@@ -25,7 +25,7 @@ export class Hello1 extends React.Component {
 
                 <Checkbox
                     boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
-                    labelSeparator={''}
+                    labelSeparator=''
                     hideLabel={true}
                     checked={this.state.showLabel}
                     handler={this.onHideLabel.bind(this)}

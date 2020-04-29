@@ -10,7 +10,7 @@ Ext.require([
     'Ext.panel.Panel', 'Ext.panel.Tool', 'Ext.grid.Panel', 'Ext.tab.Panel', 'Ext.tree.Panel',
     'Ext.grid.column.Column', 'Ext.grid.column.Action', 'Ext.tree.Column',
     'Ext.toolbar.Fill', 'Ext.toolbar.Paging', 'Ext.toolbar.Spacer', 'Ext.toolbar.Toolbar',
-    'Ext.window.Window', 'Ext.window.Toast',
+    'Ext.window.Window', 'Ext.window.Toast', 'Ext.chart.CartesianChart', 'Ext.chart.PolarChart',
     'React.widgets.NumberPaging', 'React.widgets.ClearTextField', 'React.widgets.MenuTool'
 ]);
 
@@ -137,6 +137,16 @@ export class Window extends ExtComponent {
 export class Toast extends ExtComponent {
     getComponentClass() {
         return 'Ext.window.Toast';
+    }
+}
+export class CartesianChart extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.chart.CartesianChart';
+    }
+}
+export class PolarChart extends ExtComponent {
+    getComponentClass() {
+        return 'Ext.chart.PolarChart';
     }
 }
 export class NumberPaging extends ExtComponent {

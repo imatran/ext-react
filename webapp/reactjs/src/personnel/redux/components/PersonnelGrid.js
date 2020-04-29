@@ -44,8 +44,8 @@ const ConnectedPersonnelGrid = props => {
             >
 
                 <Column
-                    text={'Name'}
-                    dataIndex={'name'}
+                    text='Name'
+                    dataIndex='name'
                     flex={1}
                     editor={
                         <TextField
@@ -55,29 +55,29 @@ const ConnectedPersonnelGrid = props => {
                 />
 
                 <Column
-                    text={'Phone'}
-                    dataIndex={'phone'}
+                    text='Phone'
+                    dataIndex='phone'
                     flex={1.5}
                 />
 
                 <Column
-                    text={'Email'}
-                    dataIndex={'email'}
+                    text='Email'
+                    dataIndex='email'
                     flex={1.5}
                 />
 
                 <ActionColumn
-                    iconCls={'x-fa fa-trash'}
-                    tdCls={'rollover-action-col'}
+                    iconCls='x-fa fa-trash'
+                    tdCls='rollover-action-col'
                     width={25}
                     menuDisabled={true}
                     hideable={false}
                     handler={onRemove}
                 />
 
-                <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}>
+                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
                     <Button
-                        text={'Add'}
+                        text='Add'
                         handler={onAdd}
                     />
 
@@ -89,13 +89,13 @@ const ConnectedPersonnelGrid = props => {
                     </Container>
 
                     <Button
-                        text={'Save'}
+                        text='Save'
                         handler={onSave}
                         disabled={props.disableSave}
                     />
 
                     <Button
-                        text={'Cancel'}
+                        text='Cancel'
                         handler={onCancel}
                     />
                 </Toolbar>

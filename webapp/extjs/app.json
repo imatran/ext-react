@@ -16,6 +16,7 @@
    *      ]
    */
   "requires": [
+    "charts",
     "font-awesome",
     "reactjs-theme"
   ],

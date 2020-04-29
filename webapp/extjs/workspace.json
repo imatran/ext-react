@@ -28,8 +28,8 @@
      */
   "frameworks": {
     "ext": {
-      "path":"ext-6.2.0",
-      "version":"6.2.0.981"
+       "path": "ext-6.2.0",
+       "version": "6.2.0.981"
     }
   },
   /**

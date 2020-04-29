@@ -30,7 +30,7 @@ export class Hello3 extends React.Component {
 
                 <Combobox
                     store={this.store}
-                    displayField={'value'}
+                    displayField='value'
                     flex={1}
                     editable={false}
                     onChange={this.onChange.bind(this)}

@@ -25,7 +25,7 @@ export class Hello2 extends React.Component {
 
                 <Radio
                     boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
-                    labelSeparator={''}
+                    labelSeparator=''
                     hideLabel={true}
                     value={this.state.boldLabel}
                     flex={1}

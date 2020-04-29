@@ -20,7 +20,7 @@ export class Hello extends React.Component {
         // console.log('Hello');
 
         return (
-            <div className={'main'}>
+            <div className='main'>
                 <Container>
                     <Hello1 helloName={this.state.helloName}/>
 
@@ -29,7 +29,7 @@ export class Hello extends React.Component {
                         <Hello3 helloName={this.state.helloName}/>
                     </Container>
 
-                    <div className={'spacer'}/>
+                    <div className='spacer'/>
 
                     <Container layout='hbox'>
                         <Label

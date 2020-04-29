@@ -36,8 +36,8 @@ export class Personnel extends React.Component {
                 >
 
                     <Column
-                        text={'Name'}
-                        dataIndex={'name'}
+                        text='Name'
+                        dataIndex='name'
                         flex={1.2}
                         editor={
                             <TextField
@@ -47,13 +47,13 @@ export class Personnel extends React.Component {
                     />
 
                     <Column
-                        text={'Age'}
-                        dataIndex={'age'}
+                        text='Age'
+                        dataIndex='age'
                         flex={1}
                         editor={
                             <Combobox
                                 store={this.ageGroups.store}
-                                displayField={'value'}
+                                displayField='value'
                                 editable={false}
                                 onSelect={(field) => { field.blur(); }}
                             />
@@ -61,29 +61,29 @@ export class Personnel extends React.Component {
                     />
 
                     <Column
-                        text={'Phone'}
-                        dataIndex={'phone'}
+                        text='Phone'
+                        dataIndex='phone'
                         flex={1.5}
                     />
 
                     <Column
-                        text={'Email'}
-                        dataIndex={'email'}
+                        text='Email'
+                        dataIndex='email'
                         flex={2}
                     />
 
                     <ActionColumn
-                        iconCls={'x-fa fa-trash'}
-                        tdCls={'rollover-action-col'}
+                        iconCls='x-fa fa-trash'
+                        tdCls='rollover-action-col'
                         width={25}
                         menuDisabled={true}
                         hideable={false}
                         handler={this.onRemove.bind(this)}
                     />
 
-                    <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}>
+                    <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
                         <Button
-                            text={'Add'}
+                            text='Add'
                             handler={this.onAdd.bind(this)}
                         />
 
@@ -97,13 +97,13 @@ export class Personnel extends React.Component {
                         </Container>
 
                         <Button
-                            text={'Save'}
+                            text='Save'
                             handler={this.onSave.bind(this)}
                             disabled={this.state.disableSave}
                         />
 
                         <Button
-                            text={'Cancel'}
+                            text='Cancel'
                             handler={this.onCancel.bind(this)}
                         />
                     </Toolbar>

@@ -34,7 +34,7 @@ export class Files extends React.Component {
                       onBeforeEdit={this.onBeforeEdit.bind(this)}
                 >
                     <TreeColumn
-                        dataIndex={'name'}
+                        dataIndex='name'
                         flex={1}
                         editor={
                             <TextField
@@ -44,26 +44,26 @@ export class Files extends React.Component {
                     />
 
                     <ActionColumn
-                        iconCls={'x-fa fa-trash'}
-                        tdCls={'rollover-action-col'}
+                        iconCls='x-fa fa-trash'
+                        tdCls='rollover-action-col'
                         width={25}
                         menuDisabled={true}
                         hideable={false}
                         handler={this.onRemove.bind(this)}
                     />
 
-                    <Toolbar dock='bottom' ui='footer' padding={'6 0 0 6'}
+                    <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'
                         hidden={this.state.disableSave}
                     >
                         <Fill flex={1} />
 
                         <Button
-                            text={'Save'}
+                            text='Save'
                             handler={this.onSave.bind(this)}
                         />
 
                         <Button
-                            text={'Cancel'}
+                            text='Cancel'
                             handler={this.onCancel.bind(this)}
                         />
                     </Toolbar>

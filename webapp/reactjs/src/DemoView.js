@@ -4,6 +4,7 @@ import { Hello } from './hello';
 import { Personnel } from './personnel';
 import { Files } from './files';
 import { MultiTabs } from './multitabs';
+import { ChartTabs } from './charts';
 import '../css/DemoView.css';
 
 import { NotificationContainer } from 'react-notifications';
@@ -21,33 +22,39 @@ export class DemoView extends React.Component {
     render() {
 
         return (
-            <div className={'demo-view'}>
+            <div className='demo-view'>
 
                 <div className='container'>
 
-                    <div className={'left'}>
+                    <div className='left'>
 
-                        <div className={'border-panel'}>
+                        <div className='border-panel'>
                             <Personnel height={this.state.gridHeight}/>
                         </div>
 
                         <div className='spacer-m'/>
 
-                        <div className={'border-panel'}>
+                        <div className='border-panel'>
                             <MultiTabs height={this.state.tabHeight}/>
+                        </div>
+
+                        <div className='spacer-m'/>
+
+                        <div className='border-panel'>
+                            <ChartTabs height={this.state.chartHeight}/>
                         </div>
 
                     </div>
 
-                    <div className={'right'}>
+                    <div className='right'>
 
-                        <div className={'border-panel'}>
+                        <div className='border-panel'>
                             <Files height={this.state.treeHeight}/>
                         </div>
 
                         <div className='spacer-m'/>
 
-                        <div className={'border-panel'}>
+                        <div className='border-panel'>
                             <Hello/>
                         </div>
 
@@ -72,10 +79,13 @@ export class DemoView extends React.Component {
     }
 
     getState() {
+        const height = this.ownerView.getHeight() / 3 - 50;
+
         return {
-            gridHeight: this.ownerView.getHeight() / 3,
-            treeHeight: this.ownerView.getHeight() / 3,
-            tabHeight: this.ownerView.getHeight() / 3 + 40
+            gridHeight: height,
+            treeHeight: height,
+            tabHeight: height + 40,
+            chartHeight: height + 40
         };
     }
 

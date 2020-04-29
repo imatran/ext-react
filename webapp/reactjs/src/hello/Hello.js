@@ -35,7 +35,7 @@ export class Hello extends React.Component {
 
                         <Checkbox
                             boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
-                            labelSeparator={''}
+                            labelSeparator=''
                             hideLabel={true}
                             checked={this.state.showLabel}
                             handler={this.onHideLabel.bind(this)}
@@ -54,7 +54,7 @@ export class Hello extends React.Component {
 
                             <Radio
                                 boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
-                                labelSeparator={''}
+                                labelSeparator=''
                                 hideLabel={true}
                                 value={this.state.boldLabel}
                                 flex={1}
@@ -78,7 +78,7 @@ export class Hello extends React.Component {
                             <Container layout='hbox' flex={1}>
                                 <Combobox
                                     store={this.store}
-                                    displayField={'value'}
+                                    displayField='value'
                                     flex={1}
                                     editable={false}
                                     onChange={this.onChange.bind(this)}
