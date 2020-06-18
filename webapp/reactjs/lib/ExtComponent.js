@@ -151,7 +151,7 @@ export default class ExtComponent extends React.Component {
     parseComponentItems(config) {
         const components = config.items;
 
-        // //filter grid columns
+        //filter grid columns
         const columns = Ext.Array.reduce(components, (items, item) => {
             if(item instanceof Ext.grid.column.Column) {
                 items.push(item);
