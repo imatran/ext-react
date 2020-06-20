@@ -3,16 +3,18 @@
   "private": true,
   "scripts": {
     "build": "webpack --env.browser=no --env.verbose=yes --env.environment=production",
-    "deploy": "webpack --env.browser=no --env.verbose=yes --env.environment=production && sencha -cw ../extjs build production",
+    "deploy": "npm run build && sencha -cw ../extjs build production",
     "dev": "webpack-dev-server --env.browser=no --env.verbose=yes",
-    "framework": "node framework.js && npm run sencha",
     "sencha": "sencha -cw ../extjs build development",
+    "framework": "node framework.js && npm run sencha",
     "test": "jest"
   },
   "dependencies": {
     "lib": "file:lib",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "redux": "^4.0.5",
+    "react-redux": "^7.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -26,15 +28,15 @@
     "adm-zip": "^0.4.14",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
+    "closure-webpack-plugin": "^2.3.0",
     "css-loader": "^3.4.2",
     "file-loader": "^6.0.0",
+    "google-closure-compiler": "^20200614.0.0",
     "jest": "^25.1.0",
     "loader-utils": "^2.0.0",
     "notistack": "^0.9.10",
     "portfinder": "^1.0.25",
     "react-notifications": "^1.6.0",
-    "react-redux": "^7.2.0",
-    "redux": "^4.0.5",
     "style-loader": "^1.1.4",
     "superagent": "^5.2.2",
     "superagent-progress": "0.0.3",

@@ -1,5 +1,6 @@
 const Path = require('path');
 const PortFinder = require('portfinder');
+const ClosurePlugin = require('closure-webpack-plugin');
 
 module.exports = async function (env) {
     const get = (it, val) => {
@@ -77,17 +78,28 @@ module.exports = async function (env) {
         }
     };
 
-    const plugins = [];
+    const plugins = {
+        development: [],
+        production: [
+            new ClosurePlugin({mode: 'STANDARD'})
+        ]
+    };
+
+    const devtool = {
+        development: 'inline-source-map',
+        production: 'source-map'
+    };
 
     const environment = get('environment', 'development');
 
     PortFinder.basePort = (env && env.port) || 3000;
     return PortFinder.getPortPromise().then(port => {
         return {
-            devtool: (environment === 'development') ? 'inline-source-map' : 'source-map',
+            mode: environment,
+            devtool: devtool[environment],
             entry: entry,
             output: output,
-            plugins: plugins,
+            plugins: plugins[environment],
             module: { rules: rules },
             resolve: resolve,
             performance: { hints: false },
