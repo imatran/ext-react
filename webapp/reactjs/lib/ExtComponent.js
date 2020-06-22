@@ -35,10 +35,6 @@ export default class ExtComponent extends React.Component {
     // ============================ //
     // === Start Helper methods === //
     // ============================ //
-    getComponentClass() {
-        return Ext.Component;
-    }
-
     createExtComponent() {
         return Ext.create(
             this.getComponentClass(),
@@ -46,6 +42,31 @@ export default class ExtComponent extends React.Component {
                 renderTo: this.extComponentRef.current
             })
         );
+    }
+
+    getComponentClass() {
+        return Ext.Component;
+    }
+
+    getComponentConfig() {
+        const config = Ext.Object.merge({}, this.props);
+
+        //map React component props to ExtJS component props
+        this.mapComponentProps(config);
+
+        //map React 'onEvents' listeners to ExtJS component listeners
+        this.mapComponentListeners(config);
+
+        if(!Ext.isEmpty(this.props.children)) {
+            const children = React.Children.toArray(this.props.children);
+            config.items = this.createComponentItems(children);
+
+            if (!Ext.isEmpty(config.items)) {
+                this.mapComponentItems(config);
+            }
+        }
+
+        return config;
     }
 
     updateComponentProps(component, props) {
@@ -94,23 +115,6 @@ export default class ExtComponent extends React.Component {
         });
     }
 
-    getComponentConfig() {
-        const config = Ext.Object.merge({}, this.props);
-
-        this.parseComponentListeners(config);
-
-        if(!Ext.isEmpty(this.props.children)) {
-            const children = React.Children.toArray(this.props.children);
-            config.items = this.createComponentItems(children);
-
-            if (!Ext.isEmpty(config.items)) {
-                this.parseComponentItems(config);
-            }
-        }
-
-        return config;
-    }
-
     createComponentItems(children, items) {
         items = items || [];
 
@@ -148,7 +152,7 @@ export default class ExtComponent extends React.Component {
         return items;
     }
 
-    parseComponentItems(config) {
+    mapComponentItems(config) {
         const components = config.items;
 
         //filter grid columns
@@ -186,7 +190,20 @@ export default class ExtComponent extends React.Component {
         config.items = !Ext.isEmpty(items) ? items : null;
     }
 
-    parseComponentListeners(config) {
+    mapComponentProps(config) {
+        const props = {
+            className: 'cls'
+        };
+
+        Ext.Object.each(props, (key, value) => {
+            if(config[key]) {
+                config[value] = config[key];
+                delete config[key];
+            }
+        });
+    }
+
+    mapComponentListeners(config) {
         Ext.Object.each(config, (key, value) => {
             let match = key.match(/^on([A-Z][a-zA-Z]*)$/);
 

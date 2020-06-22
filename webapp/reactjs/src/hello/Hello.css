@@ -1,6 +1,7 @@
 .main {
     max-width: 240px;
     min-height: 180px;
+    line-height: 32px;
 }
 
 .spacer {

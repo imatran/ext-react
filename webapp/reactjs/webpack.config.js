@@ -50,7 +50,7 @@ module.exports = async function (env) {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        outputPath: 'fonts/',
+                        outputPath: '../fonts/',
                         publicPath: 'resources/fonts',
                     }
                 }
@@ -66,8 +66,8 @@ module.exports = async function (env) {
     };
 
     const output = {
-        path: Path.resolve(__dirname, '../extjs/resources'),
-        filename: 'js/bundle.js'
+        path: Path.resolve(__dirname, '../extjs/resources/js'),
+        filename: 'bundle.js'
     };
 
     const resolve = {

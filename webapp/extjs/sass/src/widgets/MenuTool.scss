@@ -1,6 +1,8 @@
 .menu-tool {
-  .x-tool-tool-el {
-    color: inherit;
+  .x-tool-tool-el, .x-tool-img {
+    color: #919191;
+    background-color: transparent;
+    font-size: 14px;
   }
 
   &.x-tool-focus {

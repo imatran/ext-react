@@ -18,12 +18,13 @@ Ext.define('React.widgets.NumberPaging', {
         let me = this;
 
         me.callParent(arguments);
-        me.initStore();
+        me.setStore();
     },
 
-    initStore: function() {
+    setStore: function(store) {
         let me = this;
 
+        me.store = store;
         if(me.store) {
             me.removeAll();
             me.add(me.getPagingItems());

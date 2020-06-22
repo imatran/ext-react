@@ -8,7 +8,8 @@ Ext.define('React.widgets.MenuTool', {
 
     config: {
         menu: null,
-        hideOneMenu: false
+        hideOneMenu: false,
+        plain: true
     },
 
     cls: 'menu-tool',
@@ -25,7 +26,7 @@ Ext.define('React.widgets.MenuTool', {
 
     doDestroy: function() {
         const me = this,
-              menu = me.getMenu();
+            menu = me.getMenu();
 
         menu && Ext.destroy(menu);
         me.callParent(arguments);
@@ -37,12 +38,27 @@ Ext.define('React.widgets.MenuTool', {
         if (menu) {
             const instanced = menu.isMenu;
 
+            if(Ext.isEmpty(instanced) && Ext.isArray(menu)) {
+                menu = {
+                    plain: me.plain,
+                    items: menu
+                }
+            }
+
             menu = Ext.menu.Manager.get(menu, {
                 ownerCmp: me
             });
 
             menu.on('boxready', () => {
                 menu.setMinHeight(menu.getHeight() + 1);
+
+                //TODO: fix rendering problem for menus with hidden items through binding
+                Ext.Array.each(menu.items.items, item => {
+                    const itemHeight = item.getHeight();
+                    item.on('hide', () => {
+                        menu.setMinHeight(menu.getMinHeight() - itemHeight);
+                    });
+                });
             });
 
             menu.setOwnerCmp(me, instanced);
@@ -54,7 +70,7 @@ Ext.define('React.widgets.MenuTool', {
 
     showMenu: function() {
         const me = this,
-              menu = me.getMenu();
+            menu = me.getMenu();
 
         if(menu) {
             if(me.fireEvent('beforeshowmenu', menu) !== false) {
@@ -66,6 +82,11 @@ Ext.define('React.widgets.MenuTool', {
                         menu.items.get(0).handler(menu.items.get(0));
                     } else {
                         menu.showBy(me.el, me.menuAlign);
+
+                        //TODO: fix rendering problem for menus with hidden items through binding
+                        Ext.Function.defer(() => {
+                            menu.showBy(me.el, me.menuAlign);
+                        }, 1);
                     }
                 }
             }
@@ -74,9 +95,9 @@ Ext.define('React.widgets.MenuTool', {
 
     manageTooltip: function() {
         const me = this,
-              menu = me.getMenu(),
-              tooltip = Ext.tip.QuickTipManager.getQuickTip(),
-              showtip = () => { return !menu || menu.isHidden(); };
+            menu = me.getMenu(),
+            tooltip = Ext.tip.QuickTipManager.getQuickTip(),
+            showtip = () => { return !menu || menu.isHidden(); };
 
         menu && menu.on({
             hide: () => {

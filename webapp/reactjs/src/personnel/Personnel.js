@@ -80,7 +80,11 @@ export class Personnel extends React.Component {
                     handler={this.onRemove.bind(this)}
                 />
 
-                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
+                <Toolbar
+                    dock='bottom'
+                    ui='footer'
+                    padding='6 0 0 6'
+                >
                     <Button
                         text='Add'
                         handler={this.onAdd.bind(this)}
@@ -91,6 +95,7 @@ export class Personnel extends React.Component {
                         flex={1}
                     >
                             <NumberPaging
+                                style={{lineHeight: '32px'}}
                                 store={this.dataStore.pagedStore}
                             />
                     </Container>
