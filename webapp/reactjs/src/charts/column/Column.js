@@ -29,11 +29,15 @@ export class Column extends React.Component {
 
                     axes={[{
                         type: 'numeric',
-                        position: 'left'
+                        position: 'left',
+                        label: {
+                            fontSize: '10px'
+                        }
                     }, {
                         type: 'category',
                         position: 'bottom',
                         label: {
+                            fontSize: '10px',
                             rotate: {
                                 degrees: -45
                             }

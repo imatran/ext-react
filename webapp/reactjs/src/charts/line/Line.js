@@ -32,11 +32,15 @@ export class Line extends React.Component {
                     axes={[{
                         type: 'numeric',
                         position: 'left',
-                        renderer: this.onAxisLabelRender
+                        renderer: this.onAxisLabelRender,
+                        label: {
+                            fontSize: '10px'
+                        }
                     }, {
                         type: 'category',
                         position: 'bottom',
                         label: {
+                            fontSize: '10px',
                             rotate: {
                                 degrees: -45
                             }

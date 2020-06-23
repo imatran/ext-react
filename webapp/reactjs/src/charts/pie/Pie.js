@@ -32,6 +32,8 @@ export class Pie extends React.Component {
                         angleField: 'data1',
                         highlight: true,
                         label: {
+                            font: '10px',
+                            color: '#666',
                             field: 'os',
                             calloutLine: {
                                 length: 40,

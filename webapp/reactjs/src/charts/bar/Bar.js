@@ -31,10 +31,16 @@ export class Bar extends React.Component {
                     axes={[{
                         type: 'numeric',
                         position: 'bottom',
-                        renderer: this.onAxisLabelRender
+                        renderer: this.onAxisLabelRender,
+                        label: {
+                            fontSize: '10px'
+                        }
                     }, {
                         type: 'category',
-                        position: 'left'
+                        position: 'left',
+                        label: {
+                            fontSize: '10px'
+                        }
                     }]}
 
                     series={[{
