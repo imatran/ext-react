@@ -18,6 +18,7 @@ export default class ExtComponent extends React.Component {
     constructor(props) {
         super(props);
         this.extComponentRef = React.createRef();
+        this.reactComponents = [];
     }
 
     render() {
@@ -30,6 +31,14 @@ export default class ExtComponent extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.updateComponentProps(this.extComponent, this.props);
+    }
+
+    componentWillUnmount() {
+        this.reactComponents.forEach(item => {
+            if(item.el && item.el.dom) {
+                ReactDOM.unmountComponentAtNode(item.el.dom);
+            }
+        });
     }
 
     // ============================ //
@@ -61,7 +70,7 @@ export default class ExtComponent extends React.Component {
             const children = React.Children.toArray(this.props.children);
             config.items = this.createComponentItems(children);
 
-            if (!Ext.isEmpty(config.items)) {
+            if(!Ext.isEmpty(config.items)) {
                 this.mapComponentItems(config);
             }
         }
@@ -102,13 +111,7 @@ export default class ExtComponent extends React.Component {
                         break;
 
                     case child.type.prototype instanceof React.Component:
-                        if(item.el && item.el.dom) {
-                            ReactDOM.render(child, item.el.dom);
-                        } else {
-                            item.on('boxready', view => {
-                                ReactDOM.render(child, view.el.dom);
-                            });
-                        }
+                        this.renderReactComponent(child, item);
                         break;
                 }
             }
@@ -122,7 +125,7 @@ export default class ExtComponent extends React.Component {
             let item = null;
 
             if(child.type && child.props) {
-                switch (true) {
+                switch(true) {
                     case child.type.prototype instanceof ExtComponent:
                         const me = new child.type(Ext.Object.merge({key: index}, child.props));
                         item = me.createExtComponent();
@@ -133,9 +136,9 @@ export default class ExtComponent extends React.Component {
                         item = Ext.create('Ext.container.Container', {
                             layout: 'fit',
                             key: index,
-                        }).on('boxready', view => {
-                            ReactDOM.render(child, view.el.dom);
                         });
+                        
+                        this.renderReactComponent(child, item);
                         break;
                 }
             }
@@ -216,6 +219,18 @@ export default class ExtComponent extends React.Component {
                 });
             }
         });
+    }
+
+    renderReactComponent(child, item) {
+        if(item.el && item.el.dom) {
+            this.reactComponents.push(item);
+            ReactDOM.render(child, item.el.dom);
+        } else {
+            item.on('boxready', () => {
+                this.reactComponents.push(item);
+                ReactDOM.render(child, item.el.dom);
+            });
+        }
     }
 
     makeSetter(prop) {

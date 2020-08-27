@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label } from 'lib/modules';
+import { Label } from 'lib/ext-components';
 
 export class Clock extends React.Component {
 

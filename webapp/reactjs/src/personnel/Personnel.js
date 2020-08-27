@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging, TextField } from 'lib/modules';
+import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging, TextField } from 'lib/ext-components';
 import { DataStore } from './DataStore';
 import { AgeGroups } from './AgeGroups';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Checkbox, Label } from 'lib/modules';
+import { Container, Checkbox, Label } from 'lib/ext-components';
 
 export class Hello1 extends React.Component {
 

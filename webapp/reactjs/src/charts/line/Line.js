@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CartesianChart } from 'lib/modules';
+import { Container, CartesianChart } from 'lib/ext-components';
 import data from './data';
 
 Ext.require([

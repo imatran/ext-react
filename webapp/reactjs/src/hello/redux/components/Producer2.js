@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, TextField } from 'lib/modules';
+import { Button, Container, TextField } from 'lib/ext-components';
 import { updateName } from '../actions';
 
 const ConnectedProducer2 = props => {

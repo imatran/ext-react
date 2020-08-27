@@ -72,8 +72,14 @@ export class DemoView extends React.Component {
 
     componentDidMount() {
         this.ownerView.on({
+            //resize components
             afterlayout: () => {
                 this.setState(this.getState());
+            },
+
+            //unmount component when owner view is destroyed
+            destroy: () => {
+                Ext.ReactDOM.unmountComponentAtNode(element);
             }
         });
     }

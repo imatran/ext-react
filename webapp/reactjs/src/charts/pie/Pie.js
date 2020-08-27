@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, PolarChart } from 'lib/modules';
+import { Container, PolarChart } from 'lib/ext-components';
 import data from './data';
 
 Ext.require([

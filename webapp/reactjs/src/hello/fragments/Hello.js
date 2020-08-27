@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, TextField, Button, Label } from 'lib/modules';
+import { Container, TextField, Button, Label } from 'lib/ext-components';
 import { Hello1 } from './Hello1';
 import { Hello2 } from './Hello2';
 import { Hello3 } from './Hello3';

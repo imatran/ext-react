@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, ActionColumn } from 'lib/modules';
+import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, ActionColumn } from 'lib/ext-components';
 import { DataStore } from './DataStore';
 
 Ext.require([

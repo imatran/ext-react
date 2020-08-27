@@ -1,5 +1,5 @@
 import React from 'react';
-import {Container, Label, Radio} from 'lib/modules';
+import { Container, Label, Radio } from 'lib/ext-components';
 
 export class Hello2 extends React.Component {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { TabPanel, Container } from 'lib/modules';
+import { Container, TabPanel } from 'lib/ext-components';
 import { Personnel } from '../personnel';
 import { Personnel as PersonnelRedux } from '../personnel/redux';
 import { Hello as Hello } from '../hello/fragments';

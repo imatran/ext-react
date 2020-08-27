@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Container, Label, TextField } from 'lib/modules';
+import { Container, Label, TextField } from 'lib/ext-components';
 import { updateName, resetBadName } from '../actions';
 import { NotificationManager } from 'react-notifications';
 

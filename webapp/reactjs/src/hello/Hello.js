@@ -1,6 +1,6 @@
 import React from 'react';
-import { Container, Label, TextField, Button, Checkbox, Radio, Combobox } from 'lib/modules';
-import { ClearTextField, MenuTool } from 'lib/modules';
+import { Container, Label, TextField, Button, Checkbox, Radio, Combobox } from 'lib/ext-components';
+import { ClearTextField, MenuTool } from 'lib/ext-components';
 import { Store } from './Store';
 import './Hello.css';
 

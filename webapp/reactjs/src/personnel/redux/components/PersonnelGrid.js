@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, TextField } from 'lib/modules';
+import { Container, Grid, Column, ActionColumn, Button, Toolbar, TextField } from 'lib/ext-components';
 import { addRecord, removeRecord, saveChanges, cancelChanges, dataChanged } from '../actions';
 
 Ext.require([

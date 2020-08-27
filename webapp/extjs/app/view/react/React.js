@@ -7,21 +7,12 @@ Ext.define('React.view.react.React', {
 
     listeners: {
         boxready: (view) => {
-            const element = view.getEl().dom;
-
             Ext.ReactDOM.render(
                 [
                     Ext.React.createElement(Ext.react.DemoView, { key: 'demoview-1', ownerView: view })
                 ],
-                element
+                view.getEl().dom
             );
-
-            view.on({
-                //unmount component when owner view is destroyed
-                destroy: () => {
-                    Ext.ReactDOM.unmountComponentAtNode(element);
-                }
-            });
         }
     }
 });

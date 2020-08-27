@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Combobox, Label } from 'lib/modules';
+import { Container, Combobox, Label } from 'lib/ext-components';
 import { Store } from '../Store';
 
 export class Hello3 extends React.Component {
