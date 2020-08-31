@@ -2,7 +2,7 @@
   "name": "reactjs",
   "private": true,
   "scripts": {
-    "build": "webpack --env.browser=no --env.verbose=yes --env.environment=production",
+    "build": "webpack --env.browser=no --env.verbose=yes --env.environment=development",
     "deploy": "npm run build && sencha -cw ../extjs build production",
     "dev": "webpack-dev-server --env.browser=no --env.verbose=yes",
     "sencha": "sencha -cw ../extjs build development",
