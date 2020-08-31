@@ -1,5 +1,5 @@
 /**
- * Created by mbalaban on 2017-04-03.
+ * Created by atran on 2017-04-03.
  */
 Ext.define('React.overrides.data.TreeStore', {
     override: 'Ext.data.TreeStore',

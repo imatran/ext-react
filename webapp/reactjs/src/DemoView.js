@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { Clock } from './clock';
 import { Hello } from './hello';
 import { Personnel } from './personnel';
@@ -78,8 +79,8 @@ export class DemoView extends React.Component {
             },
 
             //unmount component when owner view is destroyed
-            destroy: () => {
-                Ext.ReactDOM.unmountComponentAtNode(element);
+            destroy: (view) => {
+                ReactDOM.unmountComponentAtNode(view.getEl().dom);
             }
         });
     }
