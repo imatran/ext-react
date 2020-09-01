@@ -6,7 +6,7 @@ import { Personnel } from './personnel';
 import { Files } from './files';
 import { MultiTabs } from './multitabs';
 import { ChartTabs } from './charts';
-import '../css/DemoView.css';
+import './DemoView.css';
 
 import { NotificationContainer } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';

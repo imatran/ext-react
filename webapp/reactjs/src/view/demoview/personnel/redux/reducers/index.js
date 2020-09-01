@@ -1,7 +1,7 @@
 import { ADD_RECORD, REMOVE_RECORD } from '../constants';
 import { SAVE_CHANGES, CANCEL_CHANGES } from '../constants';
 import { DATA_CHANGED } from '../constants';
-import { DataStore } from 'src/personnel/DataStore';
+import { DataStore } from 'src/view/demoview/personnel/DataStore';
 
 const initialState = {
     dataStore: new DataStore(),

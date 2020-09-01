@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, TabPanel } from 'lib/ext-components';
-import { Line, Pie, Bar, Column } from '../charts';
+import { Line, Pie, Bar, Column } from '.';
 
 export class ChartTabs extends React.Component {
 
