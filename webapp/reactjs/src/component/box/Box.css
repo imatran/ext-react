@@ -1,0 +1,11 @@
+.flex-box {
+    display: flex;
+}
+
+.flex-fill {
+    width: 100%;
+}
+
+.x-form-item {
+    width: 100%;
+}

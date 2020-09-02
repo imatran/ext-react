@@ -1,6 +1,7 @@
 import React from 'react';
-import { Container, Label, TextField, Button, Checkbox, Radio, Combobox } from 'lib/ext-components';
+import { Label, TextField, Button, Checkbox, Radio, Combobox, Spacer } from 'lib/ext-components';
 import { ClearTextField, MenuTool } from 'lib/ext-components';
+import { HBox, VBox } from 'src/component/box';
 import { Store } from './Store';
 import './Hello.css';
 
@@ -20,124 +21,98 @@ export class Hello extends React.Component {
     }
 
     render() {
-        // console.log('Hello');
 
         return (
-            <div className='main'>
-                <Container>
-                    <Container layout='hbox'>
-                        <Container flex={1}>
-                            <Label
-                                text={`Hello ${this.state.helloName} 1!`}
-                                hidden={!this.state.showLabel}
-                            />
-                        </Container>
+            <VBox className='main'>
+                <HBox>
+                    <Label
+                        text={`Hello ${this.state.helloName} 1!`}
+                        hidden={!this.state.showLabel}
+                    />
 
-                        <Checkbox
-                            boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
-                            labelSeparator=''
-                            hideLabel={true}
-                            checked={this.state.showLabel}
-                            handler={this.onHideLabel.bind(this)}
-                            flex={1}
-                        />
-                    </Container>
+                    <Checkbox
+                        boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
+                        labelSeparator=''
+                        hideLabel={true}
+                        checked={this.state.showLabel}
+                        handler={this.onHideLabel.bind(this)}
+                    />
+                </HBox>
 
-                    <Container>
-                        <Container layout='hbox'>
-                            <Container flex={1}>
-                                <Label
-                                    text={`Hello ${this.state.helloName} 2!`}
-                                    style={{fontWeight: this.state.boldLabel ? '700' : '300'}}
-                                />
-                            </Container>
+                <HBox>
+                    <Label
+                        text={`Hello ${this.state.helloName} 2!`}
+                        style={{fontWeight: this.state.boldLabel ? '700' : '300'}}
+                    />
 
-                            <Radio
-                                boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
-                                labelSeparator=''
-                                hideLabel={true}
-                                value={this.state.boldLabel}
-                                flex={1}
-                                onClick={{
-                                    fn: this.onBoldLabel.bind(this),
-                                    element: 'el'
-                                }}
-                            />
-                        </Container>
+                    <Radio
+                        boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
+                        labelSeparator=''
+                        hideLabel={true}
+                        value={this.state.boldLabel}
+                        onClick={{
+                            fn: this.onBoldLabel.bind(this),
+                            element: 'el'
+                        }}
+                    />
+                </HBox>
 
-                        <Container layout='hbox'>
-                            <Container flex={1}>
-                                <Container>
-                                    <Label
-                                        text={`Hello ${this.state.comboValue} 3!`}
-                                        flex={1}
-                                    />
-                                </Container>
-                            </Container>
+                <HBox>
+                    <Label
+                        text={`Hello ${this.state.comboValue} 3!`}
+                    />
 
-                            <Container layout='hbox' flex={1}>
-                                <Combobox
-                                    store={this.store}
-                                    displayField='value'
-                                    flex={1}
-                                    editable={false}
-                                    onChange={this.onChange.bind(this)}
-                                />
-
-                                <MenuTool
-                                    iconCls='x-fa fa-ellipsis-h'
-                                    margin='8 0 0 10'
-                                    menu={[{
-                                        text: 'Jane Doe',
-                                        handler: this.onHelloMenuSubmit.bind(this),
-                                        width: 80
-                                    }, {
-                                        text: 'John Doe',
-                                        handler: this.onHelloMenuSubmit.bind(this),
-                                        width: 80
-                                    }, {
-                                        text: 'World',
-                                        handler: this.onHelloMenuSubmit.bind(this),
-                                        width: 80
-                                    }]}
-                                />
-                            </Container>
-                        </Container>
-                    </Container>
-
-                    <div className='spacer'/>
-
-                    <Container layout='hbox'>
-                        <Label
-                            flex={1}
-                            text='Change Name:'
+                    <HBox>
+                        <Combobox
+                            store={this.store}
+                            displayField='value'
+                            editable={false}
+                            onChange={this.onChange.bind(this)}
                         />
 
-                        <TextField
-                            flex={1}
-                            onChange={this.onHelloNameChange.bind(this)}
+                        <MenuTool
+                            iconCls='x-fa fa-ellipsis-h'
+                            margin='8 0 0 10'
+                            width={26}
+                            menu={[{
+                                text: 'Jane Doe',
+                                handler: this.onHelloMenuSubmit.bind(this)
+                            }, {
+                                text: 'John Doe',
+                                handler: this.onHelloMenuSubmit.bind(this)
+                            }, {
+                                text: 'World',
+                                handler: this.onHelloMenuSubmit.bind(this)
+                            }]}
                         />
-                    </Container>
+                    </HBox>
+                </HBox>
 
-                    <div className='spacer'/>
+                <Spacer height={10}/>
+                <HBox>
+                    <Label
+                        text='Change Name:'
+                    />
 
-                    <Container layout='hbox'>
-                        <Container flex={1}>
-                            <Button
-                                text='Change Name'
-                                handler={this.onHelloInputSubmit.bind(this)}
-                                disabled={!this.state.helloInput}
-                            />
-                        </Container>
+                    <TextField
+                        onChange={this.onHelloNameChange.bind(this)}
+                    />
+                </HBox>
 
-                        <ClearTextField
-                            flex={1}
-                            value={this.state.helloInput}
-                            onChange={this.onHelloInputChange.bind(this)}
-                        />
-                    </Container>
-                </Container>
-            </div>
+                <Spacer height={10}/>
+                <HBox>
+                    <Button
+                        text='Change Name'
+                        handler={this.onHelloInputSubmit.bind(this)}
+                        disabled={!this.state.helloInput}
+                    />
+
+                    <ClearTextField
+                        value={this.state.helloInput}
+                        onChange={this.onHelloInputChange.bind(this)}
+                    />
+                </HBox>
+            </VBox>
         );
 
     }
