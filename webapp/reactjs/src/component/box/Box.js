@@ -1,5 +1,8 @@
+/**
+ * Created by atran on 02/09/2020.
+ */
 import React from 'react';
-import './Box.css';
+import './style.css';
 
 export class Box extends React.Component {
 
@@ -10,10 +13,11 @@ export class Box extends React.Component {
     }
 
     render() {
-        const props = this.getProps();
+        let props = this.getProps();
 
+        props.className = (props.className ? props.className + ' ' : '') + 'box-layout';
         return (
-            <div ref={this.boxRef} style={{...props}}>
+            <div ref={this.boxRef} {...props}>
                 {this.props.children}
             </div>
         );
@@ -28,28 +32,12 @@ export class Box extends React.Component {
                     //do nothing
                     break;
 
-                case 'margin':
-                case 'padding':
-                    props[key] = this.getPadding(value);
-                    break;
-
                 default:
                     props[key] = value;
             }
         }
 
         return props;
-    }
-
-    getPadding(value) {
-        let padding = '';
-
-        value.split(/\s+/).forEach(val => {
-            padding.length > 0 && (padding += ' ');
-            padding += `${val}px`
-        });
-
-        return padding;
     }
 
 }

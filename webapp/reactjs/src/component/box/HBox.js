@@ -1,3 +1,6 @@
+/**
+ * Created by atran on 02/09/2020.
+ */
 import React from 'react';
 import { Box } from './Box';
 
@@ -28,8 +31,9 @@ export class HBox extends Box {
         let props = this.getProps(),
             items = this.getItems();
 
+        props.className = (props.className ? props.className + ' ' : '') + 'flex-box';
         return (
-            <div ref={this.boxRef} className='flex-box' style={{...props}}>
+            <div ref={this.boxRef} {...props}>
                 {items}
             </div>
         );
