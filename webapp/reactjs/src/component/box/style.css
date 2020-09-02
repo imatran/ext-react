@@ -1,0 +1,14 @@
+/**
+ * Created by atran on 02/09/2020.
+ */
+.box-layout .flex-box {
+    display: flex;
+}
+
+.box-layout .flex-box .flex-fill {
+    width: 100%;
+}
+
+.box-layout .flex-box .x-form-item {
+    width: 100%;
+}
