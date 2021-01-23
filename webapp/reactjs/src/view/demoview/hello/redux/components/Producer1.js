@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { Container, Label, TextField } from 'lib/ext-components';
+import { ExtContainer, ExtLabel, ExtTextField } from 'lib/ext-components';
 import { updateName, resetBadName } from '../actions';
 import { NotificationManager } from 'react-notifications';
 
@@ -19,17 +19,17 @@ const ConnectedProducer1 = props => {
     // console.log('Producer1');
     return(
         <>
-            <Container layout='hbox'>
-                <Label
+            <ExtContainer layout='hbox'>
+                <ExtLabel
                     flex={1}
                     text='Change Name:'
                 />
 
-                <TextField
+                <ExtTextField
                     flex={1}
                     onChange={onNameChange}
                 />
-            </Container>
+            </ExtContainer>
 
             <div className='spacer'/>
         </>

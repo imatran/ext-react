@@ -6,6 +6,7 @@ import { Personnel } from './personnel';
 import { Files } from './files';
 import { MultiTabs } from './multitabs';
 import { ChartTabs } from './charts';
+import { DragDrop } from './dragdrop';
 import './DemoView.css';
 
 import { NotificationContainer } from 'react-notifications';
@@ -56,6 +57,12 @@ export class DemoView extends React.Component {
                         <div className='spacer-m'/>
 
                         <div className='border-panel'>
+                            <DragDrop width={240} height={this.state.dragdropHeight}/>
+                        </div>
+
+                        <div className='spacer-m'/>
+
+                        <div className='border-panel'>
                             <Hello/>
                         </div>
 
@@ -91,6 +98,7 @@ export class DemoView extends React.Component {
         return {
             gridHeight: height,
             treeHeight: height,
+            dragdropHeight: height + 40,
             tabHeight: height + 40,
             chartHeight: height + 40
         };

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, TextField } from 'lib/ext-components';
+import { ExtContainer, ExtGridPanel, ExtGridColumn, ExtActionColumn, ExtButton, ExtToolbar, ExtTextField } from 'lib/ext-components';
 import { addRecord, removeRecord, saveChanges, cancelChanges, dataChanged } from '../actions';
 
 Ext.require([
@@ -37,35 +37,35 @@ const ConnectedPersonnelGrid = props => {
     };
 
     return(
-        <Grid {...panelProps}
-              store={props.dataStore.store}
-              onBoxReady={onGridReady}
+        <ExtGridPanel {...panelProps}
+                      store={props.dataStore.store}
+                      onBoxReady={onGridReady}
         >
 
-            <Column
+            <ExtGridColumn
                 text='Name'
                 dataIndex='name'
                 flex={1}
                 editor={
-                    <TextField
+                    <ExtTextField
                         allowBlank={false}
                     />
                 }
             />
 
-            <Column
+            <ExtGridColumn
                 text='Phone'
                 dataIndex='phone'
                 flex={1.5}
             />
 
-            <Column
+            <ExtGridColumn
                 text='Email'
                 dataIndex='email'
                 flex={1.5}
             />
 
-            <ActionColumn
+            <ExtActionColumn
                 iconCls='x-fa fa-trash'
                 tdCls='rollover-action-col'
                 width={25}
@@ -74,32 +74,32 @@ const ConnectedPersonnelGrid = props => {
                 handler={onRemove}
             />
 
-            <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'>
-                <Button
+            <ExtToolbar dock='bottom' ui='footer' padding='6 0 0 6'>
+                <ExtButton
                     text='Add'
                     handler={onAdd}
                 />
 
-                <Container
+                <ExtContainer
                     layout={{type: 'hbox', pack: 'center'}}
                     flex={1}
                 >
                     <div style={{fontSize: '9px'}}>Rendered by React/Redux</div>
-                </Container>
+                </ExtContainer>
 
-                <Button
+                <ExtButton
                     text='Save'
                     handler={onSave}
                     disabled={props.disableSave}
                 />
 
-                <Button
+                <ExtButton
                     text='Cancel'
                     handler={onCancel}
                 />
-            </Toolbar>
+            </ExtToolbar>
 
-        </Grid>
+        </ExtGridPanel>
     );
 };
 

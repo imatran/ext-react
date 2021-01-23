@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Label, Radio } from 'lib/ext-components';
+import { ExtContainer, ExtLabel, ExtRadio } from 'lib/ext-components';
 
 export class Hello2 extends React.Component {
 
@@ -15,15 +15,15 @@ export class Hello2 extends React.Component {
         // console.log('Hello 2');
 
         return(
-            <Container layout='hbox'>
-                <Container flex={1}>
-                    <Label
+            <ExtContainer layout='hbox'>
+                <ExtContainer flex={1}>
+                    <ExtLabel
                         text={`Hello ${this.props.helloName} 2!`}
                         style={{fontWeight: this.state.boldLabel ? '700' : '300'}}
                     />
-                </Container>
+                </ExtContainer>
 
-                <Radio
+                <ExtRadio
                     boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
                     labelSeparator=''
                     hideLabel={true}
@@ -34,7 +34,7 @@ export class Hello2 extends React.Component {
                         element: 'el'
                     }}
                 />
-            </Container>
+            </ExtContainer>
         );
 
     }

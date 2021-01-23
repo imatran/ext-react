@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Combobox, Label } from 'lib/ext-components';
+import { ExtContainer, ExtComboBox, ExtLabel } from 'lib/ext-components';
 import { Store } from '../Store';
 
 export class Hello3 extends React.Component {
@@ -18,24 +18,24 @@ export class Hello3 extends React.Component {
         // console.log('Hello 3');
 
         return(
-            <Container layout='hbox'>
-                <Container flex={1}>
-                    <Container>
-                        <Label
+            <ExtContainer layout='hbox'>
+                <ExtContainer flex={1}>
+                    <ExtContainer>
+                        <ExtLabel
                             text={`Hello ${this.state.helloName} 3!`}
                             flex={1}
                         />
-                    </Container>
-                </Container>
+                    </ExtContainer>
+                </ExtContainer>
 
-                <Combobox
+                <ExtComboBox
                     store={this.store}
                     displayField='value'
                     flex={1}
                     editable={false}
                     onChange={this.onChange.bind(this)}
                 />
-            </Container>
+            </ExtContainer>
         );
 
     }

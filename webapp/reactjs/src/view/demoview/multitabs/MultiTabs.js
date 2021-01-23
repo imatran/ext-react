@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, TabPanel } from 'lib/ext-components';
+import { ExtContainer, ExtTabPanel } from 'lib/ext-components';
 import { Personnel } from '../personnel';
 import { Personnel as PersonnelRedux } from '../personnel/redux';
 import { Hello as Hello } from '../hello/fragments';
@@ -19,39 +19,39 @@ export class MultiTabs extends React.Component {
 
     render() {
         return(
-            <TabPanel
+            <ExtTabPanel
                 height={this.props.height}
                 onTabChange={() => { this.updateGridHeight(); }}
             >
-                <Container title='Personnels'>
+                <ExtContainer title='Personnels'>
                     <Personnel
                         height={this.state.tabContentHeight}
                     />
-                </Container>
+                </ExtContainer>
 
-                <Container title='Personnels'>
+                <ExtContainer title='Personnels'>
                     <PersonnelRedux
                         ref={c => this.reduxGridRef = c}
                         height={this.state.tabContentHeight}
                     />
-                </Container>
+                </ExtContainer>
 
-                <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
-                    <Container flex={1} scrollable={true}>
+                <ExtContainer title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
+                    <ExtContainer flex={1} scrollable={true}>
                         <Hello/>
-                    </Container>
+                    </ExtContainer>
 
                     <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React</div>
-                </Container>
+                </ExtContainer>
 
-                <Container title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
-                    <Container flex={1} scrollable={true}>
+                <ExtContainer title='Hello World!' layout={{type: 'hbox', align: 'stretch'}}>
+                    <ExtContainer flex={1} scrollable={true}>
                         <HelloRedux/>
-                    </Container>
+                    </ExtContainer>
 
                     <div style={{fontSize: '9px', margin: '8px 5px 0 5px'}}>Rendered by React/Redux</div>
-                </Container>
-            </TabPanel>
+                </ExtContainer>
+            </ExtTabPanel>
         );
     }
 

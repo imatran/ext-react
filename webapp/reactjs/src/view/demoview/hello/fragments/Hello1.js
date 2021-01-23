@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Checkbox, Label } from 'lib/ext-components';
+import { ExtContainer, ExtCheckBox, ExtLabel } from 'lib/ext-components';
 
 export class Hello1 extends React.Component {
 
@@ -15,15 +15,15 @@ export class Hello1 extends React.Component {
         // console.log('Hello1');
 
         return(
-            <Container layout='hbox'>
-                <Container flex={1}>
-                    <Label
+            <ExtContainer layout='hbox'>
+                <ExtContainer flex={1}>
+                    <ExtLabel
                         text={`Hello ${this.props.helloName} 1!`}
                         hidden={!this.state.showLabel}
                     />
-                </Container>
+                </ExtContainer>
 
-                <Checkbox
+                <ExtCheckBox
                     boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
                     labelSeparator=''
                     hideLabel={true}
@@ -31,7 +31,7 @@ export class Hello1 extends React.Component {
                     handler={this.onHideLabel.bind(this)}
                     flex={1}
                 />
-            </Container>
+            </ExtContainer>
         );
 
     }

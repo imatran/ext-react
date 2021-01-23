@@ -1,6 +1,6 @@
 import React from 'react';
-import { Label, TextField, Button, Checkbox, Radio, Combobox, Spacer } from 'lib/ext-components';
-import { ClearTextField, MenuTool } from 'lib/ext-components';
+import { ExtLabel, ExtTextField, ExtButton, ExtCheckBox, ExtRadio, ExtComboBox, ExtSpacer } from 'lib/ext-components';
+import { ExtClearTextField, ExtMenuTool } from 'lib/ext-components';
 import { HBox, VBox } from 'src/component/box';
 import { Store } from './Store';
 import './Hello.css';
@@ -25,12 +25,12 @@ export class Hello extends React.Component {
         return (
             <VBox className='main'>
                 <HBox>
-                    <Label
+                    <ExtLabel
                         text={`Hello ${this.state.helloName} 1!`}
                         hidden={!this.state.showLabel}
                     />
 
-                    <Checkbox
+                    <ExtCheckBox
                         boxLabel={this.state.showLabel ? 'Hide' : 'Show'}
                         labelSeparator=''
                         hideLabel={true}
@@ -40,12 +40,12 @@ export class Hello extends React.Component {
                 </HBox>
 
                 <HBox>
-                    <Label
+                    <ExtLabel
                         text={`Hello ${this.state.helloName} 2!`}
                         style={{fontWeight: this.state.boldLabel ? '700' : '300'}}
                     />
 
-                    <Radio
+                    <ExtRadio
                         boxLabel={this.state.boldLabel ? 'Regular' : 'Bold'}
                         labelSeparator=''
                         hideLabel={true}
@@ -58,19 +58,19 @@ export class Hello extends React.Component {
                 </HBox>
 
                 <HBox>
-                    <Label
+                    <ExtLabel
                         text={`Hello ${this.state.comboValue} 3!`}
                     />
 
                     <HBox>
-                        <Combobox
+                        <ExtComboBox
                             store={this.store}
                             displayField='value'
                             editable={false}
                             onChange={this.onChange.bind(this)}
                         />
 
-                        <MenuTool
+                        <ExtMenuTool
                             iconCls='x-fa fa-ellipsis-h'
                             margin='8 0 0 10'
                             width={26}
@@ -88,26 +88,26 @@ export class Hello extends React.Component {
                     </HBox>
                 </HBox>
 
-                <Spacer height={10}/>
+                <ExtSpacer height={10}/>
                 <HBox>
-                    <Label
+                    <ExtLabel
                         text='Change Name:'
                     />
 
-                    <TextField
+                    <ExtTextField
                         onChange={this.onHelloNameChange.bind(this)}
                     />
                 </HBox>
 
-                <Spacer height={10}/>
+                <ExtSpacer height={10}/>
                 <HBox>
-                    <Button
+                    <ExtButton
                         text='Change Name'
                         handler={this.onHelloInputSubmit.bind(this)}
                         disabled={!this.state.helloInput}
                     />
 
-                    <ClearTextField
+                    <ExtClearTextField
                         value={this.state.helloInput}
                         onChange={this.onHelloInputChange.bind(this)}
                     />

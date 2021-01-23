@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, CartesianChart } from 'lib/ext-components';
+import { ExtContainer, ExtCartesianChart } from 'lib/ext-components';
 import data from './data';
 
 Ext.require([
@@ -20,8 +20,8 @@ export class Bar extends React.Component {
 
     render() {
         return(
-            <Container layout='fit'>
-                <CartesianChart
+            <ExtContainer layout='fit'>
+                <ExtCartesianChart
                     store={this.store}
                     height={this.props.height}
                     innerPadding={10}
@@ -71,7 +71,7 @@ export class Bar extends React.Component {
                         }
                     }]}
                 />
-            </Container>
+            </ExtContainer>
         );
     }
 

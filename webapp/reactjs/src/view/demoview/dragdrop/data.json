@@ -1,0 +1,19 @@
+{
+  "buckets": [
+    [
+      { "id": 1, "title": "Box 1" },
+      { "id": 3, "title": "Box 3" }
+    ],
+    [
+      { "id": 2, "title": "Box 2" },
+      { "id": 4, "title": "Box 4" }
+    ]
+  ],
+
+  "colors": [
+    { "id": "1", "color": "red", "bucket": 1 },
+    { "id": "2", "color": "green", "bucket": 1 },
+    { "id": "3", "color": "blue", "bucket": 3 },
+    { "id": "4", "color": "yellow", "bucket": 4 }
+  ]
+}

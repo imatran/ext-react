@@ -37,10 +37,22 @@ module.exports = async function (env) {
             ]
         },
         {
-            test: /\.css$/,
+            test: /\.(css|scss)$/,
             use: [
                 'style-loader',
-                'css-loader'
+                'css-loader',
+                {
+                    loader: 'sass-loader',
+                    options: {
+                        sourceMap: true,
+                        sassOptions: {
+                            includePaths: [
+                                Path.resolve(__dirname, './sass'),
+                                Path.resolve(__dirname, '../extjs/packages/local/algo-theme/sass')
+                            ]
+                        }
+                    }
+                }
             ]
         },
         {
@@ -81,7 +93,7 @@ module.exports = async function (env) {
     const plugins = {
         development: [],
         production: [
-            new ClosurePlugin({mode: 'STANDARD'})
+            new ClosurePlugin({mode: 'STANDARD', platform: 'javascript'})
         ]
     };
 

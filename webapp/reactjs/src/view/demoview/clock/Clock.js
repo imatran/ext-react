@@ -1,5 +1,5 @@
 import React from 'react';
-import { Label } from 'lib/ext-components';
+import { ExtLabel } from 'lib/ext-components';
 
 export class Clock extends React.Component {
 
@@ -10,7 +10,7 @@ export class Clock extends React.Component {
 
     render() {
         return (
-            <Label
+            <ExtLabel
                 text={`Time: ${this.state.date.toDateString()} ${this.state.date.toLocaleTimeString()}.`}
             />
         );

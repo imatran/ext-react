@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Button, Container, TextField } from 'lib/ext-components';
+import { ExtButton, ExtContainer, ExtTextField } from 'lib/ext-components';
 import { updateName } from '../actions';
 
 const ConnectedProducer2 = props => {
@@ -17,21 +17,21 @@ const ConnectedProducer2 = props => {
 
     // console.log('Producer2');
     return(
-        <Container layout='hbox'>
-            <Container flex={1}>
-                <Button
+        <ExtContainer layout='hbox'>
+            <ExtContainer flex={1}>
+                <ExtButton
                     text='Change Name'
                     handler={onInputSubmit}
                     disabled={!input}
                 />
-            </Container>
+            </ExtContainer>
 
-            <TextField
+            <ExtTextField
                 flex={1}
                 value={input}
                 onChange={onInputChange}
             />
-        </Container>
+        </ExtContainer>
     );
 };
 

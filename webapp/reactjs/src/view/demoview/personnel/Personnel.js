@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Grid, Column, ActionColumn, Button, Toolbar, Combobox, NumberPaging, TextField } from 'lib/ext-components';
+import { ExtContainer, ExtGridPanel, ExtGridColumn, ExtActionColumn, ExtButton, ExtToolbar, ExtComboBox, ExtNumberPaging, ExtTextField } from 'lib/ext-components';
 import { DataStore } from './DataStore';
 import { AgeGroups } from './AgeGroups';
 
@@ -29,28 +29,28 @@ export class Personnel extends React.Component {
         };
 
         return(
-            <Grid {...panelProps}
-                  store={this.dataStore.pagedStore}
-                  onBoxReady={this.onGridReady.bind(this)}
+            <ExtGridPanel {...panelProps}
+                          store={this.dataStore.pagedStore}
+                          onBoxReady={this.onGridReady.bind(this)}
             >
 
-                <Column
+                <ExtGridColumn
                     text='Name'
                     dataIndex='name'
                     flex={1.2}
                     editor={
-                        <TextField
+                        <ExtTextField
                             allowBlank={false}
                         />
                     }
                 />
 
-                <Column
+                <ExtGridColumn
                     text='Age'
                     dataIndex='age'
                     flex={1}
                     editor={
-                        <Combobox
+                        <ExtComboBox
                             store={this.ageGroups.store}
                             displayField='value'
                             editable={false}
@@ -59,19 +59,19 @@ export class Personnel extends React.Component {
                     }
                 />
 
-                <Column
+                <ExtGridColumn
                     text='Phone'
                     dataIndex='phone'
                     flex={1.5}
                 />
 
-                <Column
+                <ExtGridColumn
                     text='Email'
                     dataIndex='email'
                     flex={2}
                 />
 
-                <ActionColumn
+                <ExtActionColumn
                     iconCls='x-fa fa-trash'
                     tdCls='rollover-action-col'
                     width={25}
@@ -80,39 +80,39 @@ export class Personnel extends React.Component {
                     handler={this.onRemove.bind(this)}
                 />
 
-                <Toolbar
+                <ExtToolbar
                     dock='bottom'
                     ui='footer'
                     padding='6 0 0 6'
                 >
-                    <Button
+                    <ExtButton
                         text='Add'
                         handler={this.onAdd.bind(this)}
                     />
 
-                    <Container
+                    <ExtContainer
                         layout={{type: 'hbox', pack: 'center'}}
                         flex={1}
                     >
-                            <NumberPaging
+                            <ExtNumberPaging
                                 style={{lineHeight: '32px'}}
                                 store={this.dataStore.pagedStore}
                             />
-                    </Container>
+                    </ExtContainer>
 
-                    <Button
+                    <ExtButton
                         text='Save'
                         handler={this.onSave.bind(this)}
                         disabled={this.state.disableSave}
                     />
 
-                    <Button
+                    <ExtButton
                         text='Cancel'
                         handler={this.onCancel.bind(this)}
                     />
-                </Toolbar>
+                </ExtToolbar>
 
-            </Grid>
+            </ExtGridPanel>
         );
     }
 

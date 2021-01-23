@@ -66,11 +66,11 @@ export default class ExtComponent extends React.Component {
         //map React 'onEvents' listeners to ExtJS component listeners
         this.mapComponentListeners(config);
 
-        if(!Ext.isEmpty(this.props.children)) {
+        if(this.props.children) {
             const children = React.Children.toArray(this.props.children);
             config.items = this.createComponentItems(children);
 
-            if(!Ext.isEmpty(config.items)) {
+            if(config.items) {
                 this.mapComponentItems(config);
             }
         }
@@ -89,13 +89,12 @@ export default class ExtComponent extends React.Component {
             }
         });
 
-        if(!Ext.isEmpty(props.children)) {
-            this.updateChildrenProps(component, props);
-        }
+        this.updateChildrenProps(component, props);
+        this.updateComponentItems(component, props);
     }
 
     updateChildrenProps(component, props) {
-        const children = React.Children.toArray(props.children);
+        const children = props.children ? React.Children.toArray(props.children) : [];
         const items = Ext.Array.merge(
             component.items && component.items.items || [],
             component.dockedItems && component.dockedItems.items || []
@@ -133,11 +132,7 @@ export default class ExtComponent extends React.Component {
 
                     case child.type.prototype instanceof React.Component:
                     case typeof child.props.children !== 'string':
-                        item = Ext.create('Ext.container.Container', {
-                            layout: 'fit',
-                            key: index,
-                        });
-                        
+                        item = Ext.create('Ext.container.Container', { layout: 'fit', key: index, });
                         this.renderReactComponent(child, item);
                         break;
                 }
@@ -153,6 +148,40 @@ export default class ExtComponent extends React.Component {
         });
 
         return items;
+    }
+
+    updateComponentItems(component, props) {
+        const children = props.children ? React.Children.toArray(props.children) : [];
+
+        if(component.items && component.items.length !== children.length) {
+            const config = {};
+            config.items = this.createComponentItems(children);
+
+            if(config.items) {
+                this.mapComponentItems(config);
+            }
+
+            if(config.items) {
+                this.removeComponentItems(component);
+                component.add(config.items);
+            } else {
+                if(children.length === 0 && component.items.length === 1) { //last item
+                    this.removeComponentItems(component);
+                }
+            }
+        }
+    }
+
+    removeComponentItems(component) {
+        if(component.items && component.items.length > 0) {
+            component.items.each(item => {
+                if(item.el && item.el.dom) {
+                    ReactDOM.unmountComponentAtNode(item.el.dom);
+                }
+
+                component.remove(item);
+            });
+        }
     }
 
     mapComponentItems(config) {

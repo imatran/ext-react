@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Fill, Toolbar, Tree, TreeColumn, TextField, ActionColumn } from 'lib/ext-components';
+import { ExtButton, ExtFill, ExtToolbar, ExtTreePanel, ExtTreeColumn, ExtTextField, ExtActionColumn } from 'lib/ext-components';
 import { DataStore } from './DataStore';
 
 Ext.require([
@@ -27,22 +27,22 @@ export class Files extends React.Component {
         };
 
         return(
-            <Tree {...panelProps}
-                  store={this.dataStore.store}
-                  onBoxReady={this.onGridReady.bind(this)}
-                  onBeforeEdit={this.onBeforeEdit.bind(this)}
+            <ExtTreePanel {...panelProps}
+                          store={this.dataStore.store}
+                          onBoxReady={this.onGridReady.bind(this)}
+                          onBeforeEdit={this.onBeforeEdit.bind(this)}
             >
-                <TreeColumn
+                <ExtTreeColumn
                     dataIndex='name'
                     flex={1}
                     editor={
-                        <TextField
+                        <ExtTextField
                             allowBlank={false}
                         />
                     }
                 />
 
-                <ActionColumn
+                <ExtActionColumn
                     iconCls='x-fa fa-trash'
                     tdCls='rollover-action-col'
                     width={25}
@@ -51,22 +51,22 @@ export class Files extends React.Component {
                     handler={this.onRemove.bind(this)}
                 />
 
-                <Toolbar dock='bottom' ui='footer' padding='6 0 0 6'
-                    hidden={this.state.disableSave}
+                <ExtToolbar dock='bottom' ui='footer' padding='6 0 0 6'
+                            hidden={this.state.disableSave}
                 >
-                    <Fill flex={1} />
+                    <ExtFill flex={1} />
 
-                    <Button
+                    <ExtButton
                         text='Save'
                         handler={this.onSave.bind(this)}
                     />
 
-                    <Button
+                    <ExtButton
                         text='Cancel'
                         handler={this.onCancel.bind(this)}
                     />
-                </Toolbar>
-            </Tree>
+                </ExtToolbar>
+            </ExtTreePanel>
         );
     }
 

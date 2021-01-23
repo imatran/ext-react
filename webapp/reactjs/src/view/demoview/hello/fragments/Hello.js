@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, TextField, Button, Label } from 'lib/ext-components';
+import { ExtContainer, ExtTextField, ExtButton, ExtLabel } from 'lib/ext-components';
 import { Hello1 } from './Hello1';
 import { Hello2 } from './Hello2';
 import { Hello3 } from './Hello3';
@@ -21,46 +21,46 @@ export class Hello extends React.Component {
 
         return (
             <div className='main'>
-                <Container>
+                <ExtContainer>
                     <Hello1 helloName={this.state.helloName}/>
 
-                    <Container>
+                    <ExtContainer>
                         <Hello2 helloName={this.state.helloName}/>
                         <Hello3 helloName={this.state.helloName}/>
-                    </Container>
+                    </ExtContainer>
 
                     <div className='spacer'/>
 
-                    <Container layout='hbox'>
-                        <Label
+                    <ExtContainer layout='hbox'>
+                        <ExtLabel
                             flex={1}
                             text='Change Name:'
                         />
 
-                        <TextField
+                        <ExtTextField
                             flex={1}
                             onChange={this.onHelloNameChange.bind(this)}
                         />
-                    </Container>
+                    </ExtContainer>
 
                     <div className='spacer'/>
 
-                    <Container layout='hbox'>
-                        <Container flex={1}>
-                            <Button
+                    <ExtContainer layout='hbox'>
+                        <ExtContainer flex={1}>
+                            <ExtButton
                                 text='Change Name'
                                 handler={this.onHelloInputSubmit.bind(this)}
                                 disabled={!this.state.helloInput}
                             />
-                        </Container>
+                        </ExtContainer>
 
-                        <TextField
+                        <ExtTextField
                             flex={1}
                             value={this.state.helloInput}
                             onChange={this.onHelloInputChange.bind(this)}
                         />
-                    </Container>
-                </Container>
+                    </ExtContainer>
+                </ExtContainer>
             </div>
         );
 

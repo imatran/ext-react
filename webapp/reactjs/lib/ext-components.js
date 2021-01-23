@@ -14,152 +14,152 @@ Ext.require([
     'React.widgets.NumberPaging', 'React.widgets.ClearTextField', 'React.widgets.MenuTool'
 ]);
 
-export class Container extends ExtComponent {
+export class ExtContainer extends ExtComponent {
     getComponentClass() {
         return 'Ext.container.Container';
     }
 }
-export class Panel extends ExtComponent {
+export class ExtPanel extends ExtComponent {
    getComponentClass() {
         return 'Ext.panel.Panel';
     }
 }
-export class Tool extends ExtComponent {
+export class ExtTool extends ExtComponent {
     getComponentClass() {
         return 'Ext.panel.Tool';
     }
 }
-export class Grid extends ExtComponent {
+export class ExtGridPanel extends ExtComponent {
     getComponentClass() {
         return 'Ext.grid.Panel';
     }
 }
-export class Tree extends ExtComponent {
+export class ExtTreePanel extends ExtComponent {
     getComponentClass() {
         return 'Ext.tree.Panel';
     }
 }
-export class Column extends ExtComponent {
+export class ExtGridColumn extends ExtComponent {
     getComponentClass() {
         return 'Ext.grid.column.Column';
     }
 }
-export class TreeColumn extends ExtComponent {
+export class ExtTreeColumn extends ExtComponent {
     getComponentClass() {
         return 'Ext.tree.Column';
     }
 }
-export class ActionColumn extends ExtComponent {
+export class ExtActionColumn extends ExtComponent {
     getComponentClass() {
         return 'Ext.grid.column.Action';
     }
 }
-export class TabPanel extends ExtComponent {
+export class ExtTabPanel extends ExtComponent {
     getComponentClass() {
         return 'Ext.tab.Panel';
     }
 }
-export class Button extends ExtComponent {
+export class ExtButton extends ExtComponent {
    getComponentClass() {
         return 'Ext.button.Button';
     }
 }
-export class SegmentedButton extends ExtComponent {
+export class ExtSegmentedButton extends ExtComponent {
     getComponentClass() {
         return 'Ext.button.Segmented';
     }
 }
-export class Label extends ExtComponent {
+export class ExtLabel extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.Label';
     }
 }
-export class DisplayField extends ExtComponent {
+export class ExtDisplayField extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Display';
     }
 }
-export class NumberField extends ExtComponent {
+export class ExtNumberField extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Number';
     }
 }
-export class TextArea extends ExtComponent {
+export class ExtTextArea extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.TextArea';
     }
 }
-export class TextField extends ExtComponent {
+export class ExtTextField extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Text';
     }
 }
-export class Checkbox extends ExtComponent {
+export class ExtCheckBox extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Checkbox';
     }
 }
-export class Radio extends ExtComponent {
+export class ExtRadio extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.Radio';
     }
 }
-export class Combobox extends ExtComponent {
+export class ExtComboBox extends ExtComponent {
     getComponentClass() {
         return 'Ext.form.field.ComboBox';
     }
 }
-export class Toolbar extends ExtComponent {
+export class ExtToolbar extends ExtComponent {
     getComponentClass() {
         return 'Ext.toolbar.Toolbar';
     }
 }
-export class Fill extends ExtComponent {
+export class ExtFill extends ExtComponent {
     getComponentClass() {
         return 'Ext.toolbar.Fill';
     }
 }
-export class Spacer extends ExtComponent {
+export class ExtSpacer extends ExtComponent {
     getComponentClass() {
         return 'Ext.toolbar.Spacer';
     }
 }
-export class Paging extends ExtComponent {
+export class ExtPaging extends ExtComponent {
     getComponentClass() {
         return 'Ext.toolbar.Paging';
     }
 }
-export class Window extends ExtComponent {
+export class ExtWindow extends ExtComponent {
     getComponentClass() {
         return 'Ext.window.Window';
     }
 }
-export class Toast extends ExtComponent {
+export class ExtToast extends ExtComponent {
     getComponentClass() {
         return 'Ext.window.Toast';
     }
 }
-export class CartesianChart extends ExtComponent {
+export class ExtCartesianChart extends ExtComponent {
     getComponentClass() {
         return 'Ext.chart.CartesianChart';
     }
 }
-export class PolarChart extends ExtComponent {
+export class ExtPolarChart extends ExtComponent {
     getComponentClass() {
         return 'Ext.chart.PolarChart';
     }
 }
-export class NumberPaging extends ExtComponent {
+export class ExtNumberPaging extends ExtComponent {
     getComponentClass() {
         return 'React.widgets.NumberPaging';
     }
 }
-export class ClearTextField extends ExtComponent {
+export class ExtClearTextField extends ExtComponent {
     getComponentClass() {
         return 'React.widgets.ClearTextField';
     }
 }
-export class MenuTool extends ExtComponent {
+export class ExtMenuTool extends ExtComponent {
     getComponentClass() {
         return 'React.widgets.MenuTool';
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, PolarChart } from 'lib/ext-components';
+import { ExtContainer, ExtPolarChart } from 'lib/ext-components';
 import data from './data';
 
 Ext.require([
@@ -19,8 +19,8 @@ export class Pie extends React.Component {
 
     render() {
         return(
-            <Container layout='fit'>
-                <PolarChart
+            <ExtContainer layout='fit'>
+                <ExtPolarChart
                     store={this.store}
                     height={this.props.height}
                     innerPadding={10}
@@ -46,7 +46,7 @@ export class Pie extends React.Component {
                         }
                     }]}
                 />
-            </Container>
+            </ExtContainer>
         );
     }
 

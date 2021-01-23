@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, TabPanel } from 'lib/ext-components';
+import { ExtContainer, ExtTabPanel } from 'lib/ext-components';
 import { Line, Pie, Bar, Column } from '.';
 
 export class ChartTabs extends React.Component {
@@ -16,23 +16,23 @@ export class ChartTabs extends React.Component {
 
     render() {
         return(
-            <TabPanel height={this.props.height}>
-                <Container title='Line'>
+            <ExtTabPanel height={this.props.height}>
+                <ExtContainer title='Line'>
                     <Line height={this.state.tabContentHeight} />
-                </Container>
+                </ExtContainer>
 
-                <Container title='Pie'>
+                <ExtContainer title='Pie'>
                     <Pie height={this.state.tabContentHeight} />
-                </Container>
+                </ExtContainer>
 
-                <Container title='Bar'>
+                <ExtContainer title='Bar'>
                     <Bar height={this.state.tabContentHeight} />
-                </Container>
+                </ExtContainer>
 
-                <Container title='Column'>
+                <ExtContainer title='Column'>
                     <Column height={this.state.tabContentHeight} />
-                </Container>
-            </TabPanel>
+                </ExtContainer>
+            </ExtTabPanel>
         );
     }
 

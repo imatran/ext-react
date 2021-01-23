@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Container } from 'lib/ext-components';
+import { ExtContainer } from 'lib/ext-components';
 import { Hello1 } from 'src/view/demoview/hello/fragments/Hello1';
 import { Hello2 } from 'src/view/demoview/hello/fragments/Hello2';
 import { Hello3 } from 'src/view/demoview/hello/fragments/Hello3';
@@ -12,10 +12,10 @@ const ConnectedConsumer = props => {
         <>
             <Hello1 helloName={props.helloName}/>
 
-            <Container>
+            <ExtContainer>
                 <Hello2 helloName={props.helloName}/>
                 <Hello3 helloName={props.helloName}/>
-            </Container>
+            </ExtContainer>
 
             <div className='spacer'/>
         </>

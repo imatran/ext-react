@@ -2,7 +2,7 @@
  * Created by atran on 02/09/2020.
  */
 import React from 'react';
-import './style.css';
+import './styles.scss';
 
 export class Box extends React.Component {
 
