@@ -46,7 +46,7 @@ export class DragDropTile extends React.Component {
                 />
 
                 <ExtPanel
-                    layout={{ type: 'table', columns: 2 }}
+                    layout={{ type: 'table', columns: 4 }}
                     className='tiles'
                     flex={1}
                     padding={'4 0 4 4'}

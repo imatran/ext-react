@@ -1,16 +1,16 @@
 import React from 'react';
 import { ExtContainer, ExtTabPanel } from 'lib/ext-components';
 import { Line, Pie, Bar, Column } from '.';
+import { DragDrop } from '../dragdrop';
 
 export class ChartTabs extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.tabBarHeight = 40;
-
         this.state = {
-            tabContentHeight: this.props.height - this.tabBarHeight
+            tabContentWidth: this.props.width - 25,
+            tabContentHeight: this.props.height - 40
         };
     }
 
@@ -32,14 +32,19 @@ export class ChartTabs extends React.Component {
                 <ExtContainer title='Column'>
                     <Column height={this.state.tabContentHeight} />
                 </ExtContainer>
+
+                <ExtContainer title='D&D'>
+                    <DragDrop width={this.state.tabContentWidth} height={this.state.tabContentHeight} />
+                </ExtContainer>
             </ExtTabPanel>
         );
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.height !== this.props.height) {
+        if(prevProps.width !== this.props.width || prevProps.height !== this.props.height) {
             this.setState({
-                tabContentHeight: this.props.height - this.tabBarHeight
+                tabContentWidth: this.props.width - 26,
+                tabContentHeight: this.props.height - 40
             });
         }
     }

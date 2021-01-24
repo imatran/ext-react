@@ -14,6 +14,10 @@
     { "id": "1", "color": "red", "bucket": 1 },
     { "id": "2", "color": "green", "bucket": 1 },
     { "id": "3", "color": "blue", "bucket": 3 },
-    { "id": "4", "color": "yellow", "bucket": 4 }
+    { "id": "4", "color": "yellow", "bucket": 4 },
+    { "id": "5", "color": "aqua", "bucket": 4 },
+    { "id": "6", "color": "purple", "bucket": 4 },
+    { "id": "7", "color": "lime", "bucket": 4 },
+    { "id": "8", "color": "navy", "bucket": 4 }
   ]
 }

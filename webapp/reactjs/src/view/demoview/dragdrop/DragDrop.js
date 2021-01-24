@@ -40,14 +40,9 @@ export class DragDrop extends React.Component {
         });
 
         return (
-            <>
-                <ExtContainer
-                    layout={{ type: 'vbox', align: 'stretch' }}
-                    height={this.props.height}
-                >
-                    {buckets}
-                </ExtContainer>
-            </>
+            <ExtContainer layout='fit'>
+                {buckets}
+            </ExtContainer>
         );
     }
 

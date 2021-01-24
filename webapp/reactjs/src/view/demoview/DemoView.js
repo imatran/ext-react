@@ -6,7 +6,6 @@ import { Personnel } from './personnel';
 import { Files } from './files';
 import { MultiTabs } from './multitabs';
 import { ChartTabs } from './charts';
-import { DragDrop } from './dragdrop';
 import './DemoView.css';
 
 import { NotificationContainer } from 'react-notifications';
@@ -28,7 +27,7 @@ export class DemoView extends React.Component {
 
                 <div className='container'>
 
-                    <div className='left'>
+                    <div className='left' ref={c => this.leftPanelRef = c}>
 
                         <div className='border-panel'>
                             <Personnel height={this.state.gridHeight}/>
@@ -43,7 +42,7 @@ export class DemoView extends React.Component {
                         <div className='spacer-m'/>
 
                         <div className='border-panel'>
-                            <ChartTabs height={this.state.chartHeight}/>
+                            <ChartTabs width={this.state.tabWidth} height={this.state.chartHeight}/>
                         </div>
 
                     </div>
@@ -52,12 +51,6 @@ export class DemoView extends React.Component {
 
                         <div className='border-panel'>
                             <Files height={this.state.treeHeight}/>
-                        </div>
-
-                        <div className='spacer-m'/>
-
-                        <div className='border-panel'>
-                            <DragDrop width={240} height={this.state.dragdropHeight}/>
                         </div>
 
                         <div className='spacer-m'/>
@@ -79,6 +72,8 @@ export class DemoView extends React.Component {
     }
 
     componentDidMount() {
+        this.setState(this.getState());
+
         this.ownerView.on({
             //resize components
             afterlayout: () => {
@@ -93,14 +88,15 @@ export class DemoView extends React.Component {
     }
 
     getState() {
-        const height = this.ownerView.getHeight() / 3 - 50;
+        const width = this.leftPanelRef ? this.leftPanelRef.clientWidth : 0,
+              height = this.ownerView.getHeight() / 3 - 50;
 
         return {
             gridHeight: height,
             treeHeight: height,
-            dragdropHeight: height + 40,
+            tabWidth: width,
             tabHeight: height + 40,
-            chartHeight: height + 40
+            chartHeight: height + 40,
         };
     }
 

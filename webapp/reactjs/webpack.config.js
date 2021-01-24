@@ -25,12 +25,9 @@ module.exports = async function (env) {
                 {
                     loader: 'babel-loader',
                     options: {
-                        "presets": [
-                            "@babel/preset-env",
-                            "@babel/preset-react"
-                        ],
-                        "plugins": [
-                            "@babel/plugin-proposal-class-properties"
+                        'presets': [
+                            '@babel/preset-env',
+                            '@babel/preset-react'
                         ]
                     }
                 }
@@ -48,7 +45,7 @@ module.exports = async function (env) {
                         sassOptions: {
                             includePaths: [
                                 Path.resolve(__dirname, './sass'),
-                                Path.resolve(__dirname, '../extjs/packages/local/algo-theme/sass')
+                                Path.resolve(__dirname, '../extjs/packages/local/reactjs-theme/sass')
                             ]
                         }
                     }
@@ -72,7 +69,7 @@ module.exports = async function (env) {
 
     const entry = {
         main: [
-            "@babel/polyfill",
+            '@babel/polyfill',
             Path.resolve(__dirname, './main.js')
         ]
     };
@@ -85,8 +82,7 @@ module.exports = async function (env) {
     const resolve = {
         alias: {
             src: Path.resolve(__dirname, './src'),
-            lib: Path.resolve(__dirname, './lib'),
-            css: Path.resolve(__dirname, './css')
+            lib: Path.resolve(__dirname, './lib')
         }
     };
 
