@@ -1,5 +1,5 @@
 import React from 'react';
-import { ExtContainer, ExtLabel, ExtPanel } from 'lib/ext-components';
+import { ExtContainer, ExtLabel } from 'lib/ext-components';
 import { DragDropItem } from './DragDropItem';
 
 Ext.require([
@@ -30,14 +30,13 @@ export class DragDropTile extends React.Component {
         });
 
         return (
-            <ExtContainer
+            <ExtContainer ref={c => this.ddTileRef = c}
                 layout={{ type: 'vbox', align: 'stretch' }}
                 className='dragdrop-tile'
                 width={this.props.width}
                 height={this.props.height}
                 flex={1}
                 padding={3}
-                onRender={this.initDropZone.bind(this)}
             >
                 <ExtLabel
                     className='title'
@@ -45,7 +44,7 @@ export class DragDropTile extends React.Component {
                     padding={'0 0 0 4'}
                 />
 
-                <ExtPanel
+                <ExtContainer
                     layout={{ type: 'table', columns: 4 }}
                     className='tiles'
                     flex={1}
@@ -53,15 +52,17 @@ export class DragDropTile extends React.Component {
                     scrollable={true}
                 >
                     {colors}
-                </ExtPanel>
+                </ExtContainer>
             </ExtContainer>
         );
     }
 
-    initDropZone(me) {
-        me.dropZone = new Ext.dd.DropZone(me.getEl(), {
+    componentDidMount() {
+        const cmp = this.ddTileRef.getExtComponent();
+
+        this.ddTileRef.dropZone = new Ext.dd.DropZone(cmp.getEl(), {
             getTargetFromEvent: (e) => {
-                return e.getTarget(`.${me.cls}`);
+                return e.getTarget(`.${cmp.cls} .tiles`);
             },
 
             onNodeOver: (target, dd, e, data) => {

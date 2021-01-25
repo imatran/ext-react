@@ -8,10 +8,7 @@ export class ChartTabs extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            tabContentWidth: this.props.width - 25,
-            tabContentHeight: this.props.height - 40
-        };
+        this.state = this.getState();
     }
 
     render() {
@@ -42,11 +39,15 @@ export class ChartTabs extends React.Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.width !== this.props.width || prevProps.height !== this.props.height) {
-            this.setState({
-                tabContentWidth: this.props.width - 26,
-                tabContentHeight: this.props.height - 40
-            });
+            this.setState(this.getState());
         }
+    }
+
+    getState() {
+        return {
+            tabContentWidth: this.props.width - 26,
+            tabContentHeight: this.props.height - 40
+        };
     }
 
 }

@@ -41,6 +41,10 @@ export default class ExtComponent extends React.Component {
         });
     }
 
+    getExtComponent() {
+        return this.extComponent;
+    }
+
     // ============================ //
     // === Start Helper methods === //
     // ============================ //

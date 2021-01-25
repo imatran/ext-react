@@ -2,6 +2,7 @@ import React from 'react';
 import { ExtContainer } from 'lib/ext-components';
 import { DragDropTile } from './DragDropTile';
 import data from './data.json';
+import './styles.scss';
 
 export class DragDrop extends React.Component {
 

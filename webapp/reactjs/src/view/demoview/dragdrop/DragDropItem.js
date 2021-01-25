@@ -1,6 +1,5 @@
 import React from 'react';
 import { ExtContainer } from 'lib/ext-components';
-import './styles.scss';
 
 Ext.require([
     'Ext.dd.DragZone'
@@ -10,24 +9,25 @@ export class DragDropItem extends React.Component {
 
     render() {
         return (
-            <ExtContainer
+            <ExtContainer ref={c => this.ddItemRef = c}
                 style={`background-color: ${this.props.color}`}
                 className='dragdrop-item'
-                onRender={this.initDragZone.bind(this)}
             />
         );
     }
 
-    initDragZone(me) {
-        this.dragZone = new Ext.dd.DragZone(me.getEl(), {
+    componentDidMount() {
+        const cmp = this.ddItemRef.getExtComponent();
+
+        cmp.dragZone = new Ext.dd.DragZone(cmp.getEl(), {
             getDragData: () => {
-                const sourceEl = me.getEl().dom;
+                const sourceEl = cmp.getEl().dom;
                 if(sourceEl) {
                     const d = sourceEl.cloneNode(true);
                     return {
                         ddel: d,
                         sourceEl: sourceEl,
-                        repairXY: me.getEl().getXY(),
+                        repairXY: cmp.getEl().getXY(),
                         item: this.props.item,
                         tile: this.props.tile
                     }
